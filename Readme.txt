@@ -9,3 +9,7 @@ Donde se podrán ver a través de un registro las notas de los participantes del
 3. Integrantes del grupo:
 Flores Chacon Renzo Paolo U17104672
 Valer Vilca Alma Marycielo 1620629
+
+
+Ejecutar comando para registrar datasource
+data-source add --jndi-name=java:/jdbc/dbEcomerceCursos --name=data-source add --jndi-name=java:/jdbc/dbEcomerceCursos --name=dbEcomerceCursospool --connection-url=jdbc:postgresql://localhost:5432/dbEcomerceCursos --driver-name=postgres-uwin --user-name=postgres --password=postgrespasspool --connection-url=jdbc:postgresql://localhost:5432/dbEcomerceCursos --driver-name=postgres-uwin --user-name=postgres --password=123456
