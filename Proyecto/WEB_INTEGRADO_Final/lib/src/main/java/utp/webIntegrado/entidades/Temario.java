@@ -6,9 +6,18 @@ public class Temario {
 	private int idTemario;
 	private String url;
 	private Date fechaSubida;
+	private String nombreArchivo;
 	
 	
 	
+
+	public String getNombreArchivo() {
+		return nombreArchivo;
+	}
+
+	public void setNombreArchivo(String nombreArchivo) {
+		this.nombreArchivo = nombreArchivo;
+	}
 
 	public Date getFechaSubida() {
 		return fechaSubida;

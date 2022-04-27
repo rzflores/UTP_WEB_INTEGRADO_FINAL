@@ -24,8 +24,8 @@
 <%@ page import="java.util.List"%>
 
 <%
-	DaoCategoria dao = new DaoCategoria();
-	List<Categoria> lst = dao.consultarCategoria(); 
+	DaoCurso dao = new DaoCurso();
+	List<Curso> lst = dao.consultarCurso(); 
 %>
 
 
@@ -63,12 +63,12 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-             <li class="nav-item">
+             <li class="nav-item active">
                 <a class="nav-link" href="pageCurso.jsp">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Cursos</span></a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="pageCategoria.jsp">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Categoria</span></a>
@@ -122,38 +122,13 @@
                 </nav>
                 <!-- End of Topbar -->
                 
-                <!---------Colocar contenido ------------------->      
-          		<h1>Categoria</h1>
-          		<table class="table">
-				  <thead>
-				    <tr>
-				      <th scope="col">#</th>
-				      <th scope="col">Nombre</th>
-				      <th scope="col">Nombre Corto</th>
-				      <th scope="col">Descripción</th>
-				      <th scope="col"><button class="btn btn-success">Agregar</button></th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				     <%
-				            for (Categoria ca : lst) {
-				        %>
-				        <tr>
-				            <td><%=ca.getIdCategoria()%></td>
-				            <td><%=ca.getNombre()%> </td>
-				            <td><%=ca.getNombreCorto()%> </td>
-				            <td><%=ca.getDescripcion()%> </td>				            
-				            <td><button class="btn btn-danger">Eliminar</button><button class="btn btn-info">Editar</button></td>				            
-				            					            				            				            
-				        </tr>
-				        <%
-				            }
-				        %>
-				  </tbody>
-				</table>
+          		<!---------Colocar contenido ------------------->      
+          		<h1>Agregar Temario</h1>
+          		
+          		<form action="POST" >
+          		</form>
+          		
                 
-                
-
             </div>
             <!-- End of Main Content -->
 

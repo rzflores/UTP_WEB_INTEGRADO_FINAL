@@ -24,6 +24,7 @@ public class DaoTemario extends DaoGenerico{
 				ca.setIdTemario(rs.getInt("id"));
 				ca.setUrl(rs.getString("url"));
 				ca.setFechaSubida(rs.getDate("fechaSubida"));
+				ca.setNombreArchivo(rs.getString("nombreArchivo"));
 				
 				
 				lst.add(ca);				
@@ -53,6 +54,24 @@ public class DaoTemario extends DaoGenerico{
 	    	throw new RuntimeException(e);
 	    }
 	    
+	}
+	public void actualizarTemario(Temario te) {
+		String sql = "Update from temario "
+				+ "set url = ? ,"
+				+ "fechaSubida = ?"
+				+ "where id = ?";
+		Connection cnx = getConnection();
+		try {
+			PreparedStatement stm = cnx.prepareStatement(sql);
+	        stm.setString(1, te.getUrl());
+	        stm.setDate(2, te.getFechaSubida());
+	        stm.setInt(3, te.getIdTemario());
+	        stm.executeUpdate();	
+			
+		}catch (Exception e) {
+	    	throw new RuntimeException(e);
+	    }
+		
 	}
 	
 	public boolean eliminarTemario(int idTemario) {

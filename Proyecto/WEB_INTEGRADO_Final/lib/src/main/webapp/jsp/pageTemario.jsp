@@ -126,8 +126,9 @@
 				    <tr>
 				      <th scope="col">#</th>
 				      <th scope="col">Url</th>
+				      <th scope="col">Nombre Archivo</th>
 				      <th scope="col">Fecha Subida</th>				      
-				      <th scope="col"><button class="btn btn-success">Agregar</button></th>
+				      <th scope="col"><button class="btn btn-success" onclick="location.href ='agregarTemario.jsp'">Agregar</button></th>
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -136,8 +137,9 @@
 				        %>
 				        <tr>
 				            <td><%=te.getIdTemario()%></td>
+				            <td><%=te.getNombreArchivo()%> </td>
 				            <td><%=te.getUrl()%> </td>
-				            <td><%=te.getFechaSubida()%> </td>					            
+				            <td><%=te.getFechaSubida()%> </td>
 				            <td><button class="btn btn-danger">Eliminar</button><button class="btn btn-info">Editar</button></td>
 				            
 				            					            				            				            

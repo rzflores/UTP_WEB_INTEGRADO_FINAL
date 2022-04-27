@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 
 import utp.webIntegrado.entidades.Categoria;
+import utp.webIntegrado.entidades.Temario;
 
 
 public class DaoCategoria extends DaoGenerico{
@@ -24,6 +25,8 @@ public class DaoCategoria extends DaoGenerico{
 				Categoria ca = new Categoria();
 				ca.setIdCategoria(rs.getInt("id"));
 				ca.setNombre(rs.getString("nombre"));
+				ca.setDescripcion(rs.getString("descripcion"));
+				ca.setNombreCorto(rs.getString("nombreCorto"));
 				
 				
 				lst.add(ca);				
@@ -51,6 +54,23 @@ public class DaoCategoria extends DaoGenerico{
 	    	throw new RuntimeException(e);
 	    }
 	    
+	}
+	
+	public void actualizarCategoria(Categoria ca) {
+		String sql = "Update from categoria "
+				+ "set nombre = ? "
+				+ "where id = ?";
+		Connection cnx = getConnection();
+		try {
+			PreparedStatement stm = cnx.prepareStatement(sql);
+	        stm.setString(1, ca.getNombre() );
+	        stm.setInt(2, ca.getIdCategoria());
+	        stm.executeUpdate();	
+			
+		}catch (Exception e) {
+	    	throw new RuntimeException(e);
+	    }
+		
 	}
 	
 

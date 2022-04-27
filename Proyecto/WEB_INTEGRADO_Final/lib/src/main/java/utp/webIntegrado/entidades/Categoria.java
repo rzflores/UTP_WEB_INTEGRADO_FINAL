@@ -1,12 +1,25 @@
 package utp.webIntegrado.entidades;
 
-import java.util.Date;
 
 public class Categoria {
 	private int idCategoria;
 	private String nombre;
+	private String descripcion;
+	private String nombreCorto;
 	
 	
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	public String getNombreCorto() {
+		return nombreCorto;
+	}
+	public void setNombreCorto(String nombreCordo) {
+		this.nombreCorto = nombreCordo;
+	}
 	public int getIdCategoria() {
 		return idCategoria;
 	}
