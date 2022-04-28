@@ -20,14 +20,14 @@ public class DaoTemario extends DaoGenerico{
 			rs = stm.executeQuery();
 			while(rs.next()) {
 				
-				Temario ca = new Temario();
-				ca.setIdTemario(rs.getInt("id"));
-				ca.setUrl(rs.getString("url"));
-				ca.setFechaSubida(rs.getDate("fechaSubida"));
-				ca.setNombreArchivo(rs.getString("nombreArchivo"));
+				Temario te = new Temario();
+				te.setIdTemario(rs.getInt("id"));
+				te.setUrl(rs.getString("url"));
+				te.setFechaSubida(rs.getDate("fechaSubida"));
+				te.setNombreArchivo(rs.getString("nombreArchivo"));
 				
 				
-				lst.add(ca);				
+				lst.add(te);				
 			}
 			cnx.close();		
 		}
@@ -39,7 +39,7 @@ public class DaoTemario extends DaoGenerico{
 	
 
 	public void insertarTemario(Temario te) {
-		String sql = "insert into temario values(?,?)" ;
+		String sql = "insert into temario values(?,?,?)" ;
 		Connection cnx = getConnection();
 		try {
 		      

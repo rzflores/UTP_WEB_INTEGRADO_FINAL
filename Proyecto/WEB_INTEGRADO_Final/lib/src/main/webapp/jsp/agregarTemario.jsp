@@ -63,7 +63,7 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-             <li class="nav-item active">
+             <li class="nav-item">
                 <a class="nav-link" href="pageCurso.jsp">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Cursos</span></a>
@@ -73,7 +73,7 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Categoria</span></a>
             </li>
-			 <li class="nav-item">
+			 <li class="nav-item active">
                 <a class="nav-link" href="pageTemario.jsp">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Temario</span></a>
