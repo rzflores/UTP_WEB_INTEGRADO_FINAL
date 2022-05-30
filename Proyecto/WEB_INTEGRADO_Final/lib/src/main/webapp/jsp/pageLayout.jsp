@@ -87,8 +87,7 @@
                         <i class="fa fa-window-close"></i> <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span> 
                     </button>
 
-                   
-
+                		
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
@@ -114,6 +113,7 @@
                 <!-- End of Topbar -->
                 
                 <!-- Contenido -->
+               
 
             </div>
             <!-- End of Main Content -->

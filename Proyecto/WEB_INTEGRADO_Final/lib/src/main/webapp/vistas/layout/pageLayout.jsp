@@ -10,24 +10,15 @@
     <meta name="author" content="">
 
 <title>Ecomerce</title>
-	<link href="../css/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<link href="./css/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="../css/sb-admin-2.css" rel="stylesheet">
+    <link href="./css/sb-admin-2.css" rel="stylesheet">
 </head>
 <body id="page-top">
-<%@ page import="utp.webIntegrado.dao.*" %>
-<%@ page import="utp.webIntegrado.entidades.*" %>
-<%@ page import="java.util.List"%>
-
-<%
-	DaoCurso dao = new DaoCurso();
-	List<Curso> lst = dao.consultarCurso(); 
-%>
-
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -63,7 +54,7 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-             <li class="nav-item active">
+             <li class="nav-item">
                 <a class="nav-link" href="pageCurso.jsp">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Cursos</span></a>
@@ -71,12 +62,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="pageCategoria.jsp">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Categoria</span></a>
+                    <span>Categorias</span></a>
             </li>
 			 <li class="nav-item">
                 <a class="nav-link" href="pageTemario.jsp">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Temario</span></a>
+                    <span>Temarios</span></a>
             </li>                    
 
         </ul>
@@ -122,43 +113,9 @@
                 </nav>
                 <!-- End of Topbar -->
                 
-          		<!---------Colocar contenido ------------------->      
-          		<h1>Cursos</h1>
-          		<table class="table">
-				  <thead>
-				    <tr>
-				      <th scope="col">#</th>
-				      <th scope="col">Nombre</th>
-				      <th scope="col">Precio</th>
-				      <th scope="col">Descripcion</th>
-				      <th scope="col">Categoria</th>
-				      <th scope="col">Url</th>
-				      <th scope="col"><button class="btn btn-success">Agregar</button></th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				     <%
-				            for (Curso c : lst) {
-				        %>
-				        <tr>
-				            <td><%=c.getIdCurso()%></td>
-				            <td><%=c.getNombre()%> </td>
-				            <td><%=c.getPrecio()%> </td>	
-				            <td><%=c.getDescripcion()%></td>
-				            <td><%=c.getCategoria().getNombre()%></td>
-				            <td><%=c.getTemario().getUrl()%></td>
-				            <td><button class="btn btn-danger">Eliminar</button><button class="btn btn-info">Editar</button></td>				            
-				            					            				            				            
-				        </tr>
-				        <%
-				            }
-				        %>
-				  </tbody>
-				</table>
-                <form action="<%=request.getContextPath()%>/loginServlet" method="get">
-                <button type="submit">oprimir</button>
-                </form>
-                
+                <!-- Contenido -->
+				 <p>Esta pagina es la respuesta del Servlet Get para el estudiante <%=request.getAttribute("message") %></p>   
+				
             </div>
             <!-- End of Main Content -->
 
