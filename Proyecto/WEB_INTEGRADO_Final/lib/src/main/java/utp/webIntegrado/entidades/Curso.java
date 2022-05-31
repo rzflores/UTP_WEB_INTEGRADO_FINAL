@@ -1,5 +1,8 @@
 package utp.webIntegrado.entidades;
 
+import utp.webIntegrado.entidades.Categoria;
+import utp.webIntegrado.entidades.Temario;
+
 public class Curso {
 	private int idCurso;
 	private String nombre;

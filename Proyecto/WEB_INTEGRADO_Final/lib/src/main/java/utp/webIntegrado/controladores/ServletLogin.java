@@ -38,11 +38,11 @@ public class ServletLogin extends HttpServlet {
 		//request.getRequestDispatcher("vistas/layout/pageLayout.jsp").forward(request, response);
 		if(usu.equals("jose")) 
 		{
-			request.getRequestDispatcher("vistas/layout/pageLayout.jsp").forward(request, response);
+			request.getRequestDispatcher("/vistas/layout/pageLayout.jsp").forward(request, response);
 		}
 		else 
 		{
-			request.getRequestDispatcher("vistas/login/login.jsp").forward(request, response);	
+			request.getRequestDispatcher("/vistas/login/login.jsp").forward(request, response);	
 		}
 		
 		

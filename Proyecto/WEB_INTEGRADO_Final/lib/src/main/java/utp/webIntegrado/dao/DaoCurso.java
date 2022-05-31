@@ -7,9 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import utp.webIntegrado.entidades.Categoria;
+import utp.webIntegrado.dto.DTOConsultaCurso;
 import utp.webIntegrado.entidades.Curso;
+import utp.webIntegrado.entidades.Categoria;
 import utp.webIntegrado.entidades.Temario;
+
+
 
 
 
@@ -45,6 +48,42 @@ public class DaoCurso extends DaoGenerico{
 			throw new RuntimeException(e);
 		}
 		return lst;
+	}
+	
+	
+	public List<DTOConsultaCurso> consultaCursoPorNombre(String cadena){
+		List<DTOConsultaCurso> lst = new ArrayList<DTOConsultaCurso>();
+		String sql = "select curso.id , cu.nombre , curso.precio , curso.descripcion , categoria.nombre  as categoria, temario.url "
+				+ "	from curso  curso 	"
+				+ "	inner join categoria   on (categoria.id = curso.\"idCategoria\")"
+				+ "	inner join  temario  on (temario.id = curso.\"idTemario\")"
+				+ "	where curso.nombre like ? ";
+		Connection cnx = getConnection();
+		
+		ResultSet rs;
+		try {
+			PreparedStatement stm = cnx.prepareStatement(sql);
+			stm.setString(1,cadena);
+			rs = stm.executeQuery();
+	
+			while(rs.next()) {
+				DTOConsultaCurso obj = new DTOConsultaCurso();				
+				obj.setIdCurso(rs.getInt("id"));
+				obj.setNombreCurso(rs.getString("nombre"));
+				obj.setDescripcion(rs.getString("descripcion"));		
+				obj.setNombreCategoria(rs.getString("categoria"));
+				obj.setUrlTemario(rs.getString("url"));																																								
+				lst.add(obj);				
+			}
+			cnx.close();		
+		}
+		catch(SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+
+		return lst;
+		
 	}
 	
 	

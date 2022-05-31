@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,7 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="../css/sb-admin-2.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/css/sb-admin-2.css" rel="stylesheet">
 </head>
 <body id="page-top">
 <%@ page import="utp.webIntegrado.dao.*" %>
@@ -124,6 +125,10 @@
                 
           		<!---------Colocar contenido ------------------->      
           		<h1>Cursos</h1>
+          		<form method="post" action="<%=request.getContextPath()%>/ServletPostCursos">
+          		<input type="text" name="cadena">
+          		<input type="submit" value="Buscar">
+          		</form>
           		<table class="table">
 				  <thead>
 				    <tr>
@@ -131,13 +136,23 @@
 				      <th scope="col">Nombre</th>
 				      <th scope="col">Precio</th>
 				      <th scope="col">Descripcion</th>
-				      <th scope="col">Categoria</th>
-				      <th scope="col">Url</th>
+				      <!-- <th scope="col">Categoria</th>
+				      <th scope="col">Url</th> -->
 				      <th scope="col"><button class="btn btn-success">Agregar</button></th>
 				    </tr>
 				  </thead>
 				  <tbody>
-				     <%
+				  <c:forEach items ="${listaCurso}" var="e">
+				  	<tr>  <td> <c:out value="${e.idCurso }"></c:out>  </td>  
+				  	  <td> <c:out value="${e.nombreCurso }"></c:out>  </td>
+				  	  <td> <c:out value="${e.precioCurso }"></c:out>  </td>
+				  	  <td> <c:out value="${e.descripcion }"></c:out>  </td>  </tr>
+				  	<!--<tr>  <td> <c:out value="${e.nombreCategoria }"></c:out>  </td>  </tr>
+				  	<tr>  <td> <c:out value="${e.urlTemario }"></c:out>  </td>  </tr> -->
+	
+				  </c:forEach>
+				  
+				     <!-- <%
 				            for (Curso c : lst) {
 				        %>
 				        <tr>
@@ -152,12 +167,12 @@
 				        </tr>
 				        <%
 				            }
-				        %>
+				        %> -->
 				  </tbody>
 				</table>
-                <form action="<%=request.getContextPath()%>/loginServlet" method="get">
+                <!-- <form action="<%=request.getContextPath()%>/loginServlet" method="get">
                 <button type="submit">oprimir</button>
-                </form>
+                </form> -->
                 
             </div>
             <!-- End of Main Content -->

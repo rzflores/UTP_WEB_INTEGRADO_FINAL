@@ -55,17 +55,17 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
              <li class="nav-item">
-                <a class="nav-link" href="pageCurso.jsp">
+                <a class="nav-link" href="<%=request.getContextPath() %>/jsp/pageCurso.jsp">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Cursos</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="pageCategoria.jsp">
+                <a class="nav-link" href="<%=request.getContextPath() %>/pageCategoria.jsp">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Categorias</span></a>
             </li>
 			 <li class="nav-item">
-                <a class="nav-link" href="pageTemario.jsp">
+                <a class="nav-link" href="<%=request.getContextPath() %>/pageTemario.jsp">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Temarios</span></a>
             </li>                    
@@ -114,7 +114,7 @@
                 <!-- End of Topbar -->
                 
                 <!-- Contenido -->
-				 <p>Esta pagina es la respuesta del Servlet Get para el estudiante <%=request.getAttribute("message") %></p>   
+				 
 				
             </div>
             <!-- End of Main Content -->

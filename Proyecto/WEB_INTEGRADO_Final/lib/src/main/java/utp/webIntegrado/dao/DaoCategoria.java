@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
 import utp.webIntegrado.entidades.Categoria;
 import utp.webIntegrado.entidades.Temario;
 
