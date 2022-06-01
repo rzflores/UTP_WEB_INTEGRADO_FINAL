@@ -10,14 +10,17 @@ import javax.persistence.*;
  */
 @Entity
 @NamedQueries({
-	@NamedQuery(name="Curso.findAll", query="SELECT c FROM Curso c"),
-	@NamedQuery(name="Curso.consultaCursoPorNombre", query="SELECT c FROM Curso c where c.nombre like :cadena"),
-	@NamedQuery(name="Curso.obtenerCursos", query="SELECT c FROM Curso c")
+		@NamedQuery(name="Curso.findAll", query="SELECT c FROM Curso c"),
+		@NamedQuery(name="Curso.consultaCursoPorNombre", query="SELECT c.id , c.nombre , c.descripcion , c.precio , ca.nombre as categoria , te.url as url FROM Curso c INNER JOIN Categoria ca on ca.id = c.`idCategoria`  INNER JOIN Temario te on te.id = c.\"idTemario\" where c.nombre like :cadena"),
+		@NamedQuery(name="Curso.obtenerCursos", query="SELECT c FROM Curso c")			
 })
+
 public class Curso implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(generator="seq_curso")
+	@SequenceGenerator(name="seq_cursos",sequenceName="seq_cursos", allocationSize=1)
 	private Integer id;
 
 	private String descripcion;
@@ -27,22 +30,36 @@ public class Curso implements Serializable {
 
 	@Column(name="\"idTemario\"")
 	private Integer idTemario;
+	
+	
+	private Temario temario;
+	
+	private Categoria categoria;
+	
+
+	public Temario getTemario() {
+		return temario;
+	}
+
+	public void setTemario(Temario temario) {
+		this.temario = temario;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 	private String nombre;
 
 	private double precio;
-
-	//bi-directional many-to-one association to Categoria
-	@ManyToOne
-	@JoinColumns({
-		})
-	private Categoria categoria;
-
-	//bi-directional many-to-one association to Temario
-	@ManyToOne
-	@JoinColumns({
-		})
-	private Temario temario;
 
 	public Curso() {
 	}
@@ -93,22 +110,6 @@ public class Curso implements Serializable {
 
 	public void setPrecio(double precio) {
 		this.precio = precio;
-	}
-
-	public Categoria getCategoria() {
-		return this.categoria;
-	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
-
-	public Temario getTemario() {
-		return this.temario;
-	}
-
-	public void setTemario(Temario temario) {
-		this.temario = temario;
 	}
 
 }

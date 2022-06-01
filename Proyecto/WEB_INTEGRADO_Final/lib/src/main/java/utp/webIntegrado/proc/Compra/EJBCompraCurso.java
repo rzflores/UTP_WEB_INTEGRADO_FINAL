@@ -44,12 +44,12 @@ public class EJBCompraCurso {
     		dto.setNombreCurso(cu.getNombre());
     		dto.setPrecioCurso(cu.getPrecio());
     		dto.setDescripcion(cu.getDescripcion());
-//    		dto.setNombreCategoria(cu.getCategoria().getNombre());
-//    		dto.setUrlTemario(cu.getTemario().getUrl());
+            dto.setNombreCategoria(cu.getCategoria().getNombre());
+            dto.setUrlTemario(cu.getTemario().getUrl());
     		
     		lstDto.add(dto);
     	}
-//    	
+   	
     	
 //    	for(DTOConsultaCurso objCurso : lst) {
 //    		DTOConsultaCurso objCursoDto = new DTOConsultaCurso();

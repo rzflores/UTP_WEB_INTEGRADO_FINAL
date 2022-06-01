@@ -143,13 +143,14 @@
 				  </thead>
 				  <tbody>
 				  <c:forEach items ="${listaCurso}" var="e">
-				  	<tr>  <td> <c:out value="${e.idCurso }"></c:out>  </td>  
+				  	<tr>  
+				  	  <td> <c:out value="${e.idCurso }"></c:out>  </td>  
 				  	  <td> <c:out value="${e.nombreCurso }"></c:out>  </td>
 				  	  <td> <c:out value="${e.precioCurso }"></c:out>  </td>
-				  	  <td> <c:out value="${e.descripcion }"></c:out>  </td>  </tr>
-				  	<!--<tr>  <td> <c:out value="${e.nombreCategoria }"></c:out>  </td>  </tr>
-				  	<tr>  <td> <c:out value="${e.urlTemario }"></c:out>  </td>  </tr> -->
-	
+				  	  <td> <c:out value="${e.descripcion }"></c:out>  </td>  
+				  	  <td> <c:out value="${e.nombreCategoria }"></c:out>  </td> 
+				  	  <td> <c:out value="${e.urlTemario }"></c:out>  </td>				  	    
+				  	</tr> 	
 				  </c:forEach>
 				  
 				     <!-- <%
