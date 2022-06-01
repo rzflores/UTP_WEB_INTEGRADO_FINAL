@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import utp.webIntegrado.dto.DTOConsultaCurso;
-import utp.webIntegrado.entidades.jpa.Curso;
+import utp.webIntegrado.jpa.entidades.Curso;
 
 
 /**
