@@ -2,6 +2,7 @@ package utp.webIntegrado.jpa.entidades;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -9,13 +10,7 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@NamedQueries({
-	@NamedQuery(name="Curso.findAll", query="SELECT c  FROM Curso c JOIN c.temario t JOIN c.categoria a WHERE c.nombre LIKE  :cadena"),
-	@NamedQuery(name="Curso.eliminarCurso" , query="DELETE FROM Curso c WHERE c.id=:idCurso")
-})
-
-
-
+@NamedQuery(name="Curso.findAll", query="SELECT c  FROM Curso c JOIN c.temario t JOIN c.categoria a WHERE c.nombre LIKE  :cadena")
 public class Curso implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -37,6 +32,14 @@ public class Curso implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="id_temario")
 	private Temario temario;
+
+	//bi-directional many-to-one association to Horario
+	@OneToMany(mappedBy="curso")
+	private List<Horario> horarios;
+
+	//bi-directional many-to-one association to Matricula
+	@OneToMany(mappedBy="curso")
+	private List<Matricula> matriculas;
 
 	public Curso() {
 	}
@@ -87,6 +90,50 @@ public class Curso implements Serializable {
 
 	public void setTemario(Temario temario) {
 		this.temario = temario;
+	}
+
+	public List<Horario> getHorarios() {
+		return this.horarios;
+	}
+
+	public void setHorarios(List<Horario> horarios) {
+		this.horarios = horarios;
+	}
+
+	public Horario addHorario(Horario horario) {
+		getHorarios().add(horario);
+		horario.setCurso(this);
+
+		return horario;
+	}
+
+	public Horario removeHorario(Horario horario) {
+		getHorarios().remove(horario);
+		horario.setCurso(null);
+
+		return horario;
+	}
+
+	public List<Matricula> getMatriculas() {
+		return this.matriculas;
+	}
+
+	public void setMatriculas(List<Matricula> matriculas) {
+		this.matriculas = matriculas;
+	}
+
+	public Matricula addMatricula(Matricula matricula) {
+		getMatriculas().add(matricula);
+		matricula.setCurso(this);
+
+		return matricula;
+	}
+
+	public Matricula removeMatricula(Matricula matricula) {
+		getMatriculas().remove(matricula);
+		matricula.setCurso(null);
+
+		return matricula;
 	}
 
 }
