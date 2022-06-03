@@ -2,6 +2,7 @@ package utp.webIntegrado.jpa.entidades;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -20,8 +21,12 @@ public class Categoria implements Serializable {
 
 	private String nombre;
 
-	@Column(name="\"nombreCorto\"")
+	@Column(name="nombre_corto")
 	private String nombreCorto;
+
+	//bi-directional many-to-one association to Curso
+	@OneToMany(mappedBy="categoria")
+	private List<Curso> cursos;
 
 	public Categoria() {
 	}
@@ -56,6 +61,28 @@ public class Categoria implements Serializable {
 
 	public void setNombreCorto(String nombreCorto) {
 		this.nombreCorto = nombreCorto;
+	}
+
+	public List<Curso> getCursos() {
+		return this.cursos;
+	}
+
+	public void setCursos(List<Curso> cursos) {
+		this.cursos = cursos;
+	}
+
+	public Curso addCurso(Curso curso) {
+		getCursos().add(curso);
+		curso.setCategoria(this);
+
+		return curso;
+	}
+
+	public Curso removeCurso(Curso curso) {
+		getCursos().remove(curso);
+		curso.setCategoria(null);
+
+		return curso;
 	}
 
 }

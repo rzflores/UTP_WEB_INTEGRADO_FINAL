@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import utp.webIntegrado.dto.DTOConsultaCurso;
-import utp.webIntegrado.proc.Compra.EJBCompraCurso;
+import utp.webIntegrado.proc.Consulta.EJBConsultaCursoNombre;
 
 /**
  * Servlet implementation class ServletPostCursos
@@ -26,7 +26,7 @@ public class ServletPostCursos extends HttpServlet {
 	
 	/*Inyeccion de ejb*/
 	@EJB
-	private EJBCompraCurso ejb;
+	private EJBConsultaCursoNombre ejb;
 	
 	
     public ServletPostCursos() {
@@ -46,11 +46,12 @@ public class ServletPostCursos extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String cadena = request.getParameter("cadena");	
 		
+		String cadena = request.getParameter("cadena");	
+//		System.out.println(cadena);
 		List<DTOConsultaCurso> lstConsultaCurso =ejb.consultarCurso(cadena);
-		System.out.println(cadena);
-		System.out.println(lstConsultaCurso);
+		
+	
 		request.getSession().setAttribute("listaCurso", lstConsultaCurso);
 		request.getRequestDispatcher("jsp/pageCurso.jsp").forward(request, response);		
 	}

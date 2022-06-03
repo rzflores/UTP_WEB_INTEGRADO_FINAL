@@ -1,4 +1,4 @@
-package utp.webIntegrado.proc.Compra;
+package utp.webIntegrado.proc.Consulta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,9 +8,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
 import utp.webIntegrado.dto.DTOConsultaCurso;
-import utp.webIntegrado.jpa.entidades.Curso;
+import utp.webIntegrado.jpa.entidades.*;
 
 
 /**
@@ -18,7 +17,7 @@ import utp.webIntegrado.jpa.entidades.Curso;
  */
 @Stateless
 @LocalBean
-public class EJBCompraCurso {
+public class EJBConsultaCursoNombre {
 
 	@PersistenceContext(unitName = "web-integrado-jpa")
 	private EntityManager em;	
@@ -26,16 +25,21 @@ public class EJBCompraCurso {
     /**
      * Default constructor. 
      */
-    public EJBCompraCurso() {
+    public EJBConsultaCursoNombre() {
         // TODO Auto-generated constructor stub
     }
     
     public List<DTOConsultaCurso> consultarCurso(String cadena){
     		
-    	List<DTOConsultaCurso> lstDto = new ArrayList<DTOConsultaCurso>();      	    
-    	Query query = em.createNamedQuery("Curso.consultaCursoPorNombre");
-    	query.setParameter("cadena","%"+cadena+"%");    	          	   
+    	List<DTOConsultaCurso> lstDto = new ArrayList<DTOConsultaCurso>();   
+//    	TypedQuery<Curso> query= em.createQuery("SELECT c FROM curso c", Curso.class);
+////      List<Department> resultList = query.getResultList();
+    	Query query = em.createNamedQuery("Curso.findAll");   
+    	query.setParameter("cadena","%"+cadena+"%");    	          
+    	
     	List<Curso> lstConsultaCurso = query.getResultList();
+    	
+    	
     	
     	for( Curso cu : lstConsultaCurso ) 
     	{
@@ -51,15 +55,7 @@ public class EJBCompraCurso {
     	}
    	
     	
-//    	for(DTOConsultaCurso objCurso : lst) {
-//    		DTOConsultaCurso objCursoDto = new DTOConsultaCurso();
-//    		
-//    	}    	    	
-    	//List<DTOConsultaCurso> lst = null;
-    	//curso  = em.con(Curso.class, cadena);    	
-    	//DaoCurso  dao = new DaoCurso();
-    	//lst = dao.consultaCursoPorNombre("%"+cadena+"%");
-    	
+//    	
     	return lstDto;
     	
     }

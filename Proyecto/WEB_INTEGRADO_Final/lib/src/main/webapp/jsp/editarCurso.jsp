@@ -111,57 +111,8 @@
                 
           		<!---------Colocar contenido ------------------->
           		<div class="container">      
-          		<h1>Cursos</h1>
-          		<form method="post" action="<%=request.getContextPath()%>/ServletPostCursos">
-          		<input type="text" name="cadena" placeholder="Busqueda por nombre">
-          		<input class="btn btn-outline-success" type="submit" value="Buscar">
-          		</form>
-          		<table class="table">
-				  <thead>
-				    <tr>
-				      <th scope="col">#</th>
-				      <th scope="col">Nombre</th>
-				      <th scope="col">Precio</th>
-				      <th scope="col">Descripcion</th>
-				      <th scope="col">Categoria</th>
-				      <th scope="col">Url</th> 
-				      <th scope="col">
-				       <form action="<%=request.getContextPath()%>/ServletCursoController" method="post"> 
-				         <input class="d-none" name="vista" value="agregarCurso"> 
-				         <button class="btn btn-success">Agregar</button>
-				        </form>
-				      </th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				  <c:forEach items ="${listaCurso}" var="e">
-				  	<tr>  
-				  	  <td> <c:out value="${e.idCurso }"></c:out>  </td>  
-				  	  <td> <c:out value="${e.nombreCurso }"></c:out>  </td>
-				  	  <td> <c:out value="${e.precioCurso }"></c:out>  </td>
-				  	  <td> <c:out value="${e.descripcion }"></c:out>  </td>  
-			  	      <td> <c:out value="${e.nombreCategoria }"></c:out></td> 
-				  	  <td> <c:out value="${e.urlTemario }"></c:out>  </td>	
-				  	  <td> <form action="<%=request.getContextPath()%>/ServletCursoController" method="post"> 
-				        	 <input class="d-none" name="vista" value="eliminarCurso">
-				        	 <input class="d-none" name="idCurso" value="${e.idCurso }"> 
-				         	 <button class="btn btn-danger">Eliminar</button>
-				        </form>    
-                	  </td>	
-                	  <td> 
-                	  	<form action="<%=request.getContextPath()%>/ServletCursoController" method="post"> 
-				        	 <input class="d-none" name="vista" value="editarCurso">
-				        	 <input class="d-none" name="idCurso" value="${e.idCurso }"> 
-				         	 <button class="btn btn-success">Editar</button>
-				        </form>  
-                	  </td>	   
-				  	</tr> 	
-				  </c:forEach>
-				  
-				     
-				  </tbody>
-				</table>
-                
+          		<h1>Editar Curso</h1>
+          		
                 
             </div>
             <!-- End of Main Content -->
