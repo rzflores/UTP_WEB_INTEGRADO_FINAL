@@ -52,6 +52,7 @@ public class EJBObtenerMenus {
     		dto.setNombreRol(um.getUsuario().getRole().getNombre());
     		Menu me = new Menu();
     		me.setNombre(um.getMenus().getNombre());
+    		me.setLink(um.getMenus().getLink());
     		lstMe.add(me);    		    		    		    		    		    		
     		
     	}

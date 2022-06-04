@@ -8,8 +8,8 @@
 		<class>utp.webIntegrado.jpa.entidades.Horario</class>
 		<class>utp.webIntegrado.jpa.entidades.Matricula</class>
 		<class>utp.webIntegrado.jpa.entidades.Menus</class>
+		<class>utp.webIntegrado.jpa.entidades.UsuariosMenus</class>
 		<class>utp.webIntegrado.jpa.entidades.Role</class>
 		<class>utp.webIntegrado.jpa.entidades.Usuario</class>
-		<class>utp.webIntegrado.jpa.entidades.UsuariosMenus</class>
 	</persistence-unit>
 </persistence>

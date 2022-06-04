@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,10 +23,7 @@
 <%@ page import="utp.webIntegrado.dao.*" %>
 <%@ page import="utp.webIntegrado.entidades.*" %>
 <%@ page import="java.util.List"%>
-<%
-	DaoTemario dao = new DaoTemario();
-	List<Temario> lst = dao.consultarTemario(); 
-%>
+
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -40,41 +38,23 @@
                 <div class="sidebar-brand-text mx-3">Curso<sub>Education</sub></div>
             </a>
 
-            <!-- Divider -->
+          
             
-            <!--<hr class="sidebar-divider my-0">-->
-
-            <!--<!-- Nav Item - Dashboard -->
-            <!--<li class="nav-item active">-->
-            <!--    <a class="nav-link" href="index.html">-->
-            <!--        <i class="fas fa-fw fa-tachometer-alt"></i>-->
-             <!--       <span>Dashboard</span></a>-->
-            <!--</li>-->
-
-            <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading">
-                Administrador
+           <div class="sidebar-heading">
+                <c:out value="${DTOObtenerUsuarioMenu.nombreRol}"></c:out>
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-             <li class="nav-item">
-                <a class="nav-link" href="pageCurso.jsp">
+            <c:forEach items ="${DTOObtenerUsuarioMenu.lstMenu}" var="e"> 
+            	<li class="nav-item">
+                <a class="nav-link" href="<%=request.getContextPath() %>/jsp/${e.link}.jsp">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Cursos</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="pageCategoria.jsp">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Categoria</span></a>
-            </li>
-			 <li class="nav-item active">
-                <a class="nav-link" href="pageTemario.jsp">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Temario</span></a>
-            </li>                    
+                    <span>  ${ e.nombre }</span></a>
+            	</li>            
+            </c:forEach>            
 
         </ul>
         <!-- End of Sidebar -->
@@ -90,7 +70,7 @@
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-window-close"></i> <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span> 
+                        <i class="fa fa-window-close"></i> <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <c:out value="${DTOObtenerUsuarioMenu.nombreUsuario}"></c:out></span> 
                     </button>
 
                    
@@ -108,7 +88,7 @@
                             	
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>                              
+                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><c:out value="${DTOObtenerUsuarioMenu.nombreUsuario}"></c:out></span>                              
                             </a>
                             <!-- Dropdown - User Information -->
                             
@@ -119,8 +99,9 @@
                 </nav>
                 <!-- End of Topbar -->
                 
-                 <!---------Colocar contenido ------------------->      
-          		<h1>Temario</h1>
+                 <!---------Colocar contenido ------------------->   
+                 <div class="container">   
+          		<h1>Temarios</h1>
           		<table class="table">
 				  <thead>
 				    <tr>
@@ -132,38 +113,16 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				     <%
-				            for (Temario te : lst) {
-				        %>
-				        <tr>
-				            <td><%=te.getIdTemario()%></td>
-				            <td><%=te.getNombreArchivo()%> </td>
-				            <td><%=te.getUrl()%> </td>
-				            <td><%=te.getFechaSubida()%> </td>
-				            <td><button class="btn btn-danger">Eliminar</button><button class="btn btn-info">Editar</button></td>
-				            
-				            					            				            				            
-				        </tr>
-				        <%
-				            }
-				        %>
+				     
 				  </tbody>
 				</table>
-                
+                </div>
                 
 
             </div>
             <!-- End of Main Content -->
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
+            
 
         </div>
         <!-- End of Content Wrapper -->

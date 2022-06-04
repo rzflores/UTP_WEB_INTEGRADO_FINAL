@@ -10,13 +10,15 @@ public class DTOObtenerUsuarioMenu implements Serializable{
 	
 	private String nombreUsuario;
 	private String nombreRol;
+	private List<Menu> lstMenu;
+	
 	public String getNombreRol() {
 		return nombreRol;
 	}
 	public void setNombreRol(String nombreRol) {
 		this.nombreRol = nombreRol;
 	}
-	private List<Menu> lstMenu;
+	
 	
 	public String getNombreUsuario() {
 		return nombreUsuario;

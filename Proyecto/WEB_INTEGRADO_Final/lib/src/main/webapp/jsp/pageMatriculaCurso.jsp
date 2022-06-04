@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,17 +17,12 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="../css/sb-admin-2.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/css/sb-admin-2.css" rel="stylesheet">
 </head>
 <body id="page-top">
-<%@ page import="utp.webIntegrado.dao.*" %>
-<%@ page import="utp.webIntegrado.entidades.*" %>
-<%@ page import="java.util.List"%>
 
-<%
-	DaoCurso dao = new DaoCurso();
-	List<Curso> lst = dao.consultarCurso(); 
-%>
+
+
 
 
     <!-- Page Wrapper -->
@@ -44,7 +39,7 @@
                 <div class="sidebar-brand-text mx-3">Curso<sub>Education</sub></div>
             </a>
 
-             
+           
             <hr class="sidebar-divider">
 
             <!-- Heading -->
@@ -104,25 +99,79 @@
                 </nav>
                 <!-- End of Topbar -->
                 
-          		<!---------Colocar contenido ------------------->      
-          		<h1>Agregar Temario</h1>
+          		<!---------Colocar contenido ------------------->
+          		<div class="container">      
           		
-          		<form action="POST" >
-          		</form>
-          		
+							 <h3>Datos  del Participante</h3>               	
+							Nombre=<c:out value="${dtoMatriculaParticipante.nombreParticipante}"></c:out>
+							(Codigo=<c:out value="${dtoMatriculaParticipante.idParticipante}"></c:out>)
+							<br/>
+							Correo:<c:out value="${dtoMatriculaParticipante.correoParticipante}"></c:out>
+							<br>
+							Telefono:<c:out value="${dtoMatriculaParticipante.telefonoParticipante}"></c:out>
+							<br/><br/>
+						
+							
+							
+							
+							<form method="post" action="<%=request.getContextPath() %>/ServletPostMatriculaCursoBusqueda">
+							<h3>Cursos:</h3>
+							<input type="text" name="cadena"/>
+							<input  class="btn btn-success" type="submit" value="Buscar">
+							</form>
+							<br/>
+							<table class="table">
+								<tr> 
+									<td> <b> ID </b>  </td>
+									<td> <b> CURSO</b>  </td>
+									<td> <b> PRECIO</b>  </td>
+								</tr>
+								<c:forEach items="${lstMatriculasCursos}" var="e">
+									<tr> 
+									<td> <c:out value="${e.idCurso}"></c:out> </td>
+									<td> <c:out value="${e.nombreCurso}"></c:out> </td>
+									<td> <c:out value="${e.precioCurso}"></c:out> </td>																											
+									<td>
+										<form method="post" action="<%=request.getContextPath() %>/ServletPostMatriculaCurso" >
+										    <input class="d-none" name="idCurso" value="${e.idCurso}">										    	
+										    <input type="submit" class="btn btn-success" value="Agregar" >									    									   
+										</form>
+									</td>
+									</tr>
+								</c:forEach>
+							</table>
+							<h2>Cursos a matricular:</h2>
+							<table class="table">
+								<tr> 
+									<td> <b> ID </b>  </td>
+									<td> <b> CURSO </b>  </td> 
+									<td> <b> PRECIO </b>  </td>
+								</tr>
+								<c:forEach items="${lstMatricula}" var="e">
+									<tr> <td> <c:out value="${e.idCurso}"></c:out> </td>
+									<td> <c:out value="${e.nombreCurso}"></c:out> </td>
+									<td> <c:out value="${e.precioCurso}"></c:out> </td>
+									<td>
+									 <form method="post" action="<%=request.getContextPath() %>/ServletPostMatriculaQuitarCurso" >
+										    <input class="d-none" name="idCurso" value="${e.idCurso}">										    	
+										    <input type="submit" class="btn btn-danger" value="Quitar" >									    									   
+										</form>		 								
+									</td>
+									</tr>
+								</c:forEach>
+							</table>
+							
+							<br/><br/>
+							<div class="container pb-5">							
+							<form method="post" action="<%=request.getContextPath() %>/ServletPostMatricular"><input class="btn btn-block btn-success" type="submit" value="Matricular"></form>
+							</div>
+							                	 
+							                
                 
-            </div>
-            <!-- End of Main Content -->
+                
+            	</div>
+            	<!-- End of Main Content -->
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
 
         </div>
         <!-- End of Content Wrapper -->

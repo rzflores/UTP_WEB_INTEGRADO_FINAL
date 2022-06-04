@@ -11,28 +11,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import utp.webIntegrado.dto.DTOConsultaCurso;
+import utp.webIntegrado.dto.DTOConsultaTemario;
 import utp.webIntegrado.ejb.EJBCursoCrud;
+import utp.webIntegrado.ejb.EJBTemarioCrud;
 import utp.webIntegrado.proc.Consulta.EJBConsultaCursoNombre;
+import utp.webIntegrado.proc.Consulta.EJBConsultaTemarioNombre;
 
 /**
- * Servlet implementation class ServletCursoController
+ * Servlet implementation class ServletTemarioController
  */
-@WebServlet("/ServletCursoController")
-public class ServletCursoController extends HttpServlet {
+@WebServlet("/ServletTemarioController")
+public class ServletTemarioController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
 	
-	/*Inyeccion de ejb*/
 	@EJB
-	private EJBConsultaCursoNombre ejb;
+	private EJBConsultaTemarioNombre ejb;
 	@EJB
-	private EJBCursoCrud ejbCursoCrud;
-	
-	
-    public ServletCursoController() {
+	private EJBTemarioCrud ejbTemarioCrud;
+    public ServletTemarioController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,9 +41,7 @@ public class ServletCursoController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		
+		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -53,23 +51,21 @@ public class ServletCursoController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String vistaNombre = request.getParameter("vista");
-		String idCurso = request.getParameter("idCurso");
+		String idTemario = request.getParameter("idTemario");
 		boolean result = false;
 		
 		switch(vistaNombre ) {
-				case "agregarCurso":
-					request.getRequestDispatcher("jsp/agregarCurso.jsp").forward(request, response);
-				case "editarCurso":
-					request.getRequestDispatcher("jsp/editarCurso.jsp").forward(request, response);	
-				case "eliminarCurso":
+				case "agregarTemario":
+					request.getRequestDispatcher("jsp/agregarTemario.jsp").forward(request, response);
+				case "editarTemario":
+					request.getRequestDispatcher("jsp/editarTemario.jsp").forward(request, response);	
+				case "eliminarTemario":
 					String cadena = "";									
-					result = ejbCursoCrud.eliminarCurso(Integer.parseInt(idCurso));
-					List<DTOConsultaCurso> lstConsultaCurso =ejb.consultarCurso(cadena);									
-					request.getSession().setAttribute("listaCurso", lstConsultaCurso);
-					request.getRequestDispatcher("jsp/pageCurso.jsp").forward(request, response);	
+					result = ejbTemarioCrud.eliminarTemario(Integer.parseInt(idTemario));
+					List<DTOConsultaTemario> lstConsultaCurso =ejb.consultarCurso(cadena);									
+					request.getSession().setAttribute("listaTemario", lstConsultaCurso);
+					request.getRequestDispatcher("jsp/pageTemario.jsp").forward(request, response);	
 		}
-		
-		
 	}
 
 }

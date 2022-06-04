@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import utp.webIntegrado.dto.DTOConsultaCurso;
 import utp.webIntegrado.dto.DTOLoginUsuario;
 import utp.webIntegrado.dto.DTOObtenerUsuarioMenu;
+import utp.webIntegrado.entidades.Menu;
 import utp.webIntegrado.proc.Consulta.EJBConsultaCursoNombre;
 import utp.webIntegrado.proc.Login.EJBLoginUsuario;
 import utp.webIntegrado.proc.obtenerMenus.EJBObtenerMenus;
@@ -64,11 +65,8 @@ public class ServletLogin extends HttpServlet {
 		{
 			int idUsuario = lstLoginUsuario.get(0).getIdUsuario();
 			DTOObtenerUsuarioMenu dtoUsuarioMenu = ejbObtenerMenus.obtenerUsuarioMenu(idUsuario);	
-			
-			System.out.println(dtoUsuarioMenu.getNombreRol());
-			System.out.println(dtoUsuarioMenu.getNombreUsuario());
-//			foreach(List<Menu> lst in  dtoUsuarioMenu.getNombreUsuario())
-			
+						
+			request.getSession().setAttribute("DTOObtenerUsuarioMenu", dtoUsuarioMenu);
 			request.getRequestDispatcher("/vistas/layout/pageLayout.jsp").forward(request, response);	
 		}
 		

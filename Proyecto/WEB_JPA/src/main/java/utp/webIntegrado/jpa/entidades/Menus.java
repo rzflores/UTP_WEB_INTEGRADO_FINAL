@@ -2,7 +2,6 @@ package utp.webIntegrado.jpa.entidades;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
 
 
 /**
@@ -17,11 +16,9 @@ public class Menus implements Serializable {
 	@Id
 	private Integer id;
 
-	private String nombre;
+	private String link;
 
-	//bi-directional many-to-one association to UsuariosMenus
-	@OneToMany(mappedBy="menus")
-	private List<UsuariosMenus> usuariosMenuses;
+	private String nombre;
 
 	public Menus() {
 	}
@@ -34,34 +31,20 @@ public class Menus implements Serializable {
 		this.id = id;
 	}
 
+	public String getLink() {
+		return this.link;
+	}
+
+	public void setLink(String link) {
+		this.link = link;
+	}
+
 	public String getNombre() {
 		return this.nombre;
 	}
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	public List<UsuariosMenus> getUsuariosMenuses() {
-		return this.usuariosMenuses;
-	}
-
-	public void setUsuariosMenuses(List<UsuariosMenus> usuariosMenuses) {
-		this.usuariosMenuses = usuariosMenuses;
-	}
-
-	public UsuariosMenus addUsuariosMenus(UsuariosMenus usuariosMenus) {
-		getUsuariosMenuses().add(usuariosMenus);
-		usuariosMenus.setMenus(this);
-
-		return usuariosMenus;
-	}
-
-	public UsuariosMenus removeUsuariosMenus(UsuariosMenus usuariosMenus) {
-		getUsuariosMenuses().remove(usuariosMenus);
-		usuariosMenus.setMenus(null);
-
-		return usuariosMenus;
 	}
 
 }

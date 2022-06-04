@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,42 +35,22 @@
                 <div class="sidebar-brand-text mx-3">Curso<sub>Education</sub></div>
             </a>
 
-            <!-- Divider -->
-            
-            <!--<hr class="sidebar-divider my-0">-->
-
-            <!--<!-- Nav Item - Dashboard -->
-            <!--<li class="nav-item active">-->
-            <!--    <a class="nav-link" href="index.html">-->
-            <!--        <i class="fas fa-fw fa-tachometer-alt"></i>-->
-             <!--       <span>Dashboard</span></a>-->
-            <!--</li>-->
-
-            <!-- Divider -->
+           
             <hr class="sidebar-divider">
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Administrador
+                <c:out value="${DTOObtenerUsuarioMenu.nombreRol}"></c:out>
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-             <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath() %>/jsp/pageCurso.jsp">
+            <c:forEach items ="${DTOObtenerUsuarioMenu.lstMenu}" var="e"> 
+            	<li class="nav-item">
+                <a class="nav-link" href="<%=request.getContextPath() %>/jsp/${e.link}.jsp">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Cursos</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath() %>/pageCategoria.jsp">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Categorias</span></a>
-            </li>
-			 <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath() %>/pageTemario.jsp">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Temarios</span></a>
-            </li>                    
-
+                    <span>  ${ e.nombre }</span></a>
+            	</li>            
+            </c:forEach>                     
         </ul>
         <!-- End of Sidebar -->
 

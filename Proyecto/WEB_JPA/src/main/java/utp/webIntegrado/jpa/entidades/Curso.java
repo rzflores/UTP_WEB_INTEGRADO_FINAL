@@ -10,7 +10,10 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Curso.findAll", query="SELECT c  FROM Curso c JOIN c.temario t JOIN c.categoria a WHERE c.nombre LIKE  :cadena")
+@NamedQueries({
+	@NamedQuery(name="Curso.findAll", query="SELECT c  FROM Curso c JOIN c.temario t JOIN c.categoria a WHERE c.nombre LIKE  :cadena"),
+	@NamedQuery(name="Curso.eliminarCurso" ,query="DELETE FROM Curso c where c.id = :idCurso")
+})
 public class Curso implements Serializable {
 	private static final long serialVersionUID = 1L;
 

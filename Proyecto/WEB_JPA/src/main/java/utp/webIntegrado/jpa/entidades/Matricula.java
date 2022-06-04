@@ -10,7 +10,7 @@ import java.util.Date;
  * 
  */
 @Entity
-@NamedQuery(name="Matricula.findAll", query="SELECT m FROM Matricula m")
+@NamedQuery(name="Matricula.obtenerParcipantesEvaluar", query="SELECT m FROM Matricula m JOIN m.usuario u JOIN m.curso c WHERE u.primerNombre LIKE :cadena")
 public class Matricula implements Serializable {
 	private static final long serialVersionUID = 1L;
 

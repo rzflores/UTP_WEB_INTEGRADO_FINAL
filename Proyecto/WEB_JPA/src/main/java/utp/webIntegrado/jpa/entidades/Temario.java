@@ -11,7 +11,12 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Temario.findAll", query="SELECT t FROM Temario t")
+@NamedQueries({
+	@NamedQuery(name="Temario.findAll", query="SELECT t FROM Temario t where t.id=:cadena"),
+	@NamedQuery(name="Temario.eliminarTemario", query="SELECT t FROM Temario t"),
+})
+
+
 public class Temario implements Serializable {
 	private static final long serialVersionUID = 1L;
 

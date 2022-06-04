@@ -2,7 +2,6 @@ package utp.webIntegrado.jpa.entidades;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
 
 
 /**
@@ -11,12 +10,21 @@ import java.util.List;
  */
 @Entity
 @Table(name="usuarios")
-@NamedQuery(name="Usuario.loginUsuario", query="SELECT u FROM Usuario u JOIN u.role r WHERE u.correo=:correo AND u.contrasenia=:contrasenia")
+@NamedQueries({
+	@NamedQuery(name="Usuario.loginUsuario", query="SELECT u FROM Usuario u JOIN u.role r WHERE u.correo=:correo AND u.contrasenia=:contrasenia"),
+	
+})
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private Integer id;
+
+	@Column(name="apellido_materno")
+	private String apellidoMaterno;
+
+	@Column(name="apellido_paterno")
+	private String apellidoPaterno;
 
 	private String contrasenia;
 
@@ -24,27 +32,18 @@ public class Usuario implements Serializable {
 
 	private Integer edad;
 
-	@Column(name="primer_apellido")
-	private String primerApellido;
-
 	@Column(name="primer_nombre")
 	private String primerNombre;
 
 	@Column(name="segundo_nombre")
 	private String segundoNombre;
 
-	//bi-directional many-to-one association to Matricula
-	@OneToMany(mappedBy="usuario")
-	private List<Matricula> matriculas;
+	private String telefono;
 
 	//bi-directional many-to-one association to Role
 	@ManyToOne
 	@JoinColumn(name="id_rol")
 	private Role role;
-
-	//bi-directional many-to-one association to UsuariosMenus
-	@OneToMany(mappedBy="usuario")
-	private List<UsuariosMenus> usuariosMenuses;
 
 	public Usuario() {
 	}
@@ -55,6 +54,22 @@ public class Usuario implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getApellidoMaterno() {
+		return this.apellidoMaterno;
+	}
+
+	public void setApellidoMaterno(String apellidoMaterno) {
+		this.apellidoMaterno = apellidoMaterno;
+	}
+
+	public String getApellidoPaterno() {
+		return this.apellidoPaterno;
+	}
+
+	public void setApellidoPaterno(String apellidoPaterno) {
+		this.apellidoPaterno = apellidoPaterno;
 	}
 
 	public String getContrasenia() {
@@ -81,14 +96,6 @@ public class Usuario implements Serializable {
 		this.edad = edad;
 	}
 
-	public String getPrimerApellido() {
-		return this.primerApellido;
-	}
-
-	public void setPrimerApellido(String primerApellido) {
-		this.primerApellido = primerApellido;
-	}
-
 	public String getPrimerNombre() {
 		return this.primerNombre;
 	}
@@ -105,26 +112,12 @@ public class Usuario implements Serializable {
 		this.segundoNombre = segundoNombre;
 	}
 
-	public List<Matricula> getMatriculas() {
-		return this.matriculas;
+	public String getTelefono() {
+		return this.telefono;
 	}
 
-	public void setMatriculas(List<Matricula> matriculas) {
-		this.matriculas = matriculas;
-	}
-
-	public Matricula addMatricula(Matricula matricula) {
-		getMatriculas().add(matricula);
-		matricula.setUsuario(this);
-
-		return matricula;
-	}
-
-	public Matricula removeMatricula(Matricula matricula) {
-		getMatriculas().remove(matricula);
-		matricula.setUsuario(null);
-
-		return matricula;
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
 
 	public Role getRole() {
@@ -133,28 +126,6 @@ public class Usuario implements Serializable {
 
 	public void setRole(Role role) {
 		this.role = role;
-	}
-
-	public List<UsuariosMenus> getUsuariosMenuses() {
-		return this.usuariosMenuses;
-	}
-
-	public void setUsuariosMenuses(List<UsuariosMenus> usuariosMenuses) {
-		this.usuariosMenuses = usuariosMenuses;
-	}
-
-	public UsuariosMenus addUsuariosMenus(UsuariosMenus usuariosMenus) {
-		getUsuariosMenuses().add(usuariosMenus);
-		usuariosMenus.setUsuario(this);
-
-		return usuariosMenus;
-	}
-
-	public UsuariosMenus removeUsuariosMenus(UsuariosMenus usuariosMenus) {
-		getUsuariosMenuses().remove(usuariosMenus);
-		usuariosMenus.setUsuario(null);
-
-		return usuariosMenus;
 	}
 
 }

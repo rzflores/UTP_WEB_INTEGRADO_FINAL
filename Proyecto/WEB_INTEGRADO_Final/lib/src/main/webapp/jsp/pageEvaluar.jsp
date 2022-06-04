@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,17 +17,14 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="../css/sb-admin-2.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/css/sb-admin-2.css" rel="stylesheet">
 </head>
 <body id="page-top">
 <%@ page import="utp.webIntegrado.dao.*" %>
 <%@ page import="utp.webIntegrado.entidades.*" %>
 <%@ page import="java.util.List"%>
 
-<%
-	DaoCurso dao = new DaoCurso();
-	List<Curso> lst = dao.consultarCurso(); 
-%>
+
 
 
     <!-- Page Wrapper -->
@@ -44,7 +41,7 @@
                 <div class="sidebar-brand-text mx-3">Curso<sub>Education</sub></div>
             </a>
 
-             
+           
             <hr class="sidebar-divider">
 
             <!-- Heading -->
@@ -59,7 +56,7 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>  ${ e.nombre }</span></a>
             	</li>            
-            </c:forEach>            
+            </c:forEach>                         
 
         </ul>
         <!-- End of Sidebar -->
@@ -104,11 +101,53 @@
                 </nav>
                 <!-- End of Topbar -->
                 
-          		<!---------Colocar contenido ------------------->      
-          		<h1>Agregar Temario</h1>
-          		
-          		<form action="POST" >
-          		</form>
+          		<!---------Colocar contenido ------------------->
+          		<div class="container">      
+          		<h1>Evaluar Participantes:</h1>
+          		       <form method="post" action="<%=request.getContextPath() %>/ServletPostParticipanteEvaluar">
+						Participante:
+						<input type="text" name="cadena"/>
+						<input name="vista" value="" class="d-none" />
+						<input class="btn btn-success" type="submit" value="Buscar">
+						</form>
+						<br/>
+						
+						<table class="table">
+							<thead>
+							   <tr>
+							     <td>#</td>
+							     <td>Participante</td>
+							     <td>Curso</td>
+							     <td>Nota</td> 
+							     <td></td> 
+							   </tr>
+							</thead>
+							<tbody>
+								
+								<c:forEach items="${lstParticipantesEvaluar}" var="e"  >
+								<tr>
+									<td> <c:out  value="${ e.idParticipante }"> </c:out>  </td>
+									<td> <c:out  value="${ e.participante }"> </c:out>  </td>
+									<td> <c:out  value="${ e.cursoNombre }"> </c:out>  </td>
+									<c:if test="${e.esHabilitado}">
+									  	<td><input type="text" > <td>
+									</c:if>
+									<c:if test="${!e.esHabilitado}">
+									  	<td><input type="text" disabled> <td>
+									</c:if>
+									
+									<td>
+									<form method="post" action="<%=request.getContextPath() %>/ServletPostParticipanteEvaluar"  >
+										<input class="d-none" name="vista" value="cambio" >
+										<input class="d-none" name="idParticipante" value="${e.idParticipante}" >
+										<input id="btnEdit" type="submit" value="E" >
+									</form>
+									<td>
+								</tr>	
+								</c:forEach>
+								
+							</tbody>
+						</table>
           		
                 
             </div>

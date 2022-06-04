@@ -1,4 +1,4 @@
-package utp.webIntegrao.ejb;
+package utp.webIntegrado.ejb;
 
 import java.util.ArrayList;
 import java.util.List;

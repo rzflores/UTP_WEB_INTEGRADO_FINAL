@@ -86,5 +86,39 @@ public class DaoCurso extends DaoGenerico{
 		
 	}
 	
-	
+
+	public List<DTOConsultaCurso> consultaMatriculaCursoPorNombre(String cadena) {
+		List<DTOConsultaCurso> lst = new ArrayList<>();
+		String sql = "select id, nombre, precio,descripcion, id_categoria, id_temario from curso where nombre like ?";
+		Connection cnx = getConnection();
+		ResultSet rs;
+		PreparedStatement stm = null;
+		try {
+			stm = cnx.prepareStatement(sql);
+			
+			stm.setString(1, cadena);
+			rs = stm.executeQuery();
+			while (rs.next()) {
+				DTOConsultaCurso u = new DTOConsultaCurso();
+				u.setIdCurso(rs.getInt(1));
+				u.setNombreCurso(rs.getString(2));
+				u.setPrecioCurso(rs.getDouble(3));
+				u.setDescripcion(rs.getString(4));
+				u.setNombreCategoria(rs.getString(5));
+				u.setUrlTemario(rs.getString(6));
+				lst.add(u);
+			}
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			try {
+				stm.close();
+				cnx.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return lst;
+	}
 }
