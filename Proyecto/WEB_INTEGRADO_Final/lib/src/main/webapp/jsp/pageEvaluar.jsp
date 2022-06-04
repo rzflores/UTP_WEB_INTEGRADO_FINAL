@@ -129,20 +129,14 @@
 									<td> <c:out  value="${ e.idParticipante }"> </c:out>  </td>
 									<td> <c:out  value="${ e.participante }"> </c:out>  </td>
 									<td> <c:out  value="${ e.cursoNombre }"> </c:out>  </td>
-									<c:if test="${e.esHabilitado}">
-									  	<td><input type="text" > <td>
-									</c:if>
-									<c:if test="${!e.esHabilitado}">
-									  	<td><input type="text" disabled> <td>
-									</c:if>
-									
 									<td>
 									<form method="post" action="<%=request.getContextPath() %>/ServletPostParticipanteEvaluar"  >
-										<input class="d-none" name="vista" value="cambio" >
-										<input class="d-none" name="idParticipante" value="${e.idParticipante}" >
-										<input id="btnEdit" type="submit" value="E" >
+										<input name="nota" type="text" value="0.0" >
+										<input class="d-none" name="vista" value="grabar" >
+										<input class="d-none" name="idParticipanteMatricula" value="${e.idMatriculaParticipante}" >
+										<input class="btn btn-success" type="submit" value="Grabar" >
 									</form>
-									<td>
+									</td>
 								</tr>	
 								</c:forEach>
 								

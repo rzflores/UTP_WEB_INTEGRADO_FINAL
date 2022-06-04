@@ -48,22 +48,21 @@ public class ServletPostParticipanteEvaluar extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String vistaNombre = request.getParameter("vista");
-		String idParticipante = request.getParameter("idParticipante");
+		boolean result = false;
 
 		List<DTOParticipanteEvaluar> lst = new ArrayList<DTOParticipanteEvaluar>();
 		switch(vistaNombre) {
 				
-				case "cambio":
-					request.getRequestDispatcher("jsp/pageEvaluar.jsp").forward(request, response);	
+				case "grabar":
+					String idParticipanteMatricula = request.getParameter("idParticipanteMatricula");
+					String nota = request.getParameter("nota");
+//					
 					lst = (List<DTOParticipanteEvaluar>) request.getSession().getAttribute("lstParticipantesEvaluar");
-					
-					for(DTOParticipanteEvaluar pe : lst) {
-						if(pe.getIdParticipante() == Integer.parseInt( idParticipante)) {
-							pe.setEsHabilitado(true);
-						}
-					}
-					
-					
+				
+					System.out.println(nota);
+					System.out.println(idParticipanteMatricula);
+					result = ejb.registrarNota( Integer.parseInt(idParticipanteMatricula), Integer.parseInt(nota));
+					lst = ejb.obtenerParticipanteEvaluar("");
 					request.getSession().setAttribute("lstParticipantesEvaluar", lst);
 					request.getRequestDispatcher("jsp/pageEvaluar.jsp").forward(request, response);	
 			    default:

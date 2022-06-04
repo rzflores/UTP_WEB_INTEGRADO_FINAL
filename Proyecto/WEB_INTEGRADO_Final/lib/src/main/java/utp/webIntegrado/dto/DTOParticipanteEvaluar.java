@@ -1,6 +1,13 @@
 package utp.webIntegrado.dto;
 
 public class DTOParticipanteEvaluar {
+	private int idMatriculaParticipante;
+	public int getIdMatriculaParticipante() {
+		return idMatriculaParticipante;
+	}
+	public void setIdMatriculaParticipante(int idMatriculaParticipante) {
+		this.idMatriculaParticipante = idMatriculaParticipante;
+	}
 	private int idParticipante;
 	private boolean esHabilitado;
 	public boolean getEsHabilitado() {

@@ -46,11 +46,12 @@ public class EJBRegistrarNotas {
       	for( Matricula ma : lstMatricula ) 
       	{
       		DTOParticipanteEvaluar dto = new DTOParticipanteEvaluar();
+     		dto.setIdMatriculaParticipante(ma.getId());
       		dto.setIdParticipante(ma.getUsuario().getId());
       		dto.setParticipante(ma.getUsuario().getPrimerNombre() + ma.getUsuario().getApellidoPaterno() + ma.getUsuario().getApellidoMaterno());
       		dto.setCursoNombre(ma.getCurso().getNombre());
       		dto.setEsHabilitado(false);
-      		
+      		System.out.println(ma.getId());
       		lstPa.add(dto);    		    		    		    		    		    		
       		
       	}
@@ -59,4 +60,27 @@ public class EJBRegistrarNotas {
       	return lstPa;
       	
       }
+    
+    
+
+    public boolean registrarNota(int idParticipanteMatricula , int nota){
+  		
+      	
+      	
+      	Query query = em.createNamedQuery("Matricula.registrarNota");   
+      	query.setParameter("idParticipanteMatricula",idParticipanteMatricula);
+      	query.setParameter("nota", nota );
+      	
+      	 query.executeUpdate();
+      	
+      	
+      	
+      	     
+
+      	return true;
+      	
+      }
+    
+    
+    
 }
