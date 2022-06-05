@@ -17,7 +17,7 @@ import utp.webIntegrado.dto.DTOParticipanteMatricula;
 public class DaoMatricula extends DaoGenerico {
 	public void insertarMatriculas(DTOParticipanteMatricula dto, List<DTOConsultaCurso> lst) {
 		String sql = "insert into matricula(fecha,id_curso,id_usuario) values (?, ? , ?)";
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		DateTimeFormatter  dtf= DateTimeFormatter.ofPattern("yyyy/MM/dd");
 		Connection cnx = getConnection();
 		try {
 			for (DTOConsultaCurso dtoCursoConsulta : lst) {
@@ -25,8 +25,8 @@ public class DaoMatricula extends DaoGenerico {
 				LocalDate localDate = LocalDate.now();
 				PreparedStatement stm = cnx.prepareStatement(sql);			
 				stm.setDate(1,Date.valueOf(localDate) );
-				stm.setInt(2, dto.getIdParticipante());
-				stm.setInt(3, dtoCursoConsulta.getIdCurso());
+				stm.setInt(2,dtoCursoConsulta.getIdCurso() );
+				stm.setInt(3, dto.getIdParticipante());
 				stm.execute();
 			}
 			cnx.close(); 

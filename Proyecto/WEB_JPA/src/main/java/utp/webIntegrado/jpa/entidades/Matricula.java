@@ -12,7 +12,7 @@ import java.util.Date;
 @Entity
  @NamedQueries({
 	 @NamedQuery(name="Matricula.obtenerParcipantesEvaluar", query="SELECT m FROM Matricula m JOIN m.usuario u JOIN m.curso c WHERE u.primerNombre LIKE :cadena AND m.nota IS NULL")
-	 ,@NamedQuery(name="Matricula.registrarNota" , query="update Matricula m SET m.nota=:nota   WHERE m.id =:idParticipanteMatricula")
+//	 ,@NamedQuery(name="Matricula.registrarNota" , query="UPDATE Matricula m SET m.nota ::= notaCalificada   WHERE m.id =:idParticipanteMatricula")
  })
 
 public class Matricula implements Serializable {

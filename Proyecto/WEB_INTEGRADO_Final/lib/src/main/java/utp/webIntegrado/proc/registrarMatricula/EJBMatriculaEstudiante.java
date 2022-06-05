@@ -49,6 +49,8 @@ public class EJBMatriculaEstudiante {
 		}
 
 		public void matricular(DTOParticipanteMatricula dto, List<DTOConsultaCurso> lst) {
+			
+			System.out.println(dto.getCorreoParticipante());
 			DaoMatricula dao = new DaoMatricula();
 			dao.insertarMatriculas(dto, lst);
 		

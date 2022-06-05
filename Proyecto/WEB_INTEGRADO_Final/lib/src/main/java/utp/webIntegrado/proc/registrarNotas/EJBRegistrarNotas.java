@@ -1,13 +1,16 @@
 package utp.webIntegrado.proc.registrarNotas;
 
+import java.lang.annotation.Native;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import utp.webIntegrado.dto.DTOObtenerUsuarioMenu;
 import utp.webIntegrado.dto.DTOParticipanteEvaluar;
@@ -48,10 +51,10 @@ public class EJBRegistrarNotas {
       		DTOParticipanteEvaluar dto = new DTOParticipanteEvaluar();
      		dto.setIdMatriculaParticipante(ma.getId());
       		dto.setIdParticipante(ma.getUsuario().getId());
-      		dto.setParticipante(ma.getUsuario().getPrimerNombre() + ma.getUsuario().getApellidoPaterno() + ma.getUsuario().getApellidoMaterno());
+      		dto.setParticipante(ma.getUsuario().getPrimerNombre() + " " + ma.getUsuario().getApellidoPaterno() + " " + ma.getUsuario().getApellidoMaterno());
       		dto.setCursoNombre(ma.getCurso().getNombre());
       		dto.setEsHabilitado(false);
-      		System.out.println(ma.getId());
+
       		lstPa.add(dto);    		    		    		    		    		    		
       		
       	}
@@ -67,9 +70,9 @@ public class EJBRegistrarNotas {
   		
       	
       	
-      	Query query = em.createNamedQuery("Matricula.registrarNota");   
+    	Query query =  em.createQuery("UPDATE Matricula m SET m.nota =:notaCalificada   WHERE m.id =:idParticipanteMatricula");   
       	query.setParameter("idParticipanteMatricula",idParticipanteMatricula);
-      	query.setParameter("nota", nota );
+      	query.setParameter("notaCalificada", nota );
       	
       	 query.executeUpdate();
       	
