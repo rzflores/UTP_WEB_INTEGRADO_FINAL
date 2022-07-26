@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import utp.webIntegrado.dto.DTOConsultaCurso;
-import utp.webIntegrado.dto.DTOConsultaTemario;
-import utp.webIntegrado.ejb.EJBCursoCrud;
-import utp.webIntegrado.ejb.EJBTemarioCrud;
 import utp.webIntegrado.proc.Consulta.EJBConsultaCursoNombre;
 import utp.webIntegrado.proc.Consulta.EJBConsultaTemarioNombre;
+import utp.webIntegrado.proc.gestionCursos.EJBGestionCursos;
+import utp.webIntegrado.proc.gestionCursos.dto.DTOConsultaCurso;
+import utp.webIntegrado.proc.gestionTemarios.EJBTemarioCrud;
+import utp.webIntegrado.proc.gestionTemarios.dto.DTOConsultaTemario;
 
 /**
  * Servlet implementation class ServletTemarioController

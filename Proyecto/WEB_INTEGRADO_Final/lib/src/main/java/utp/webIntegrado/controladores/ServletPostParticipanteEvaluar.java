@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import utp.webIntegrado.dto.DTOConsultaCurso;
 import utp.webIntegrado.dto.DTOConsultaParticipante;
 import utp.webIntegrado.dto.DTOParticipanteEvaluar;
+import utp.webIntegrado.proc.gestionCursos.dto.DTOConsultaCurso;
 import utp.webIntegrado.proc.registrarMatricula.EJBMatriculaEstudiante;
 import utp.webIntegrado.proc.registrarNotas.EJBRegistrarNotas;
 

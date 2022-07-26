@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import utp.webIntegrado.dto.DTOConsultaCurso;
+import utp.webIntegrado.proc.gestionCursos.dto.DTOConsultaCurso;
 
 /**
  * Servlet implementation class ServletPostMatriculaQuitarCurso

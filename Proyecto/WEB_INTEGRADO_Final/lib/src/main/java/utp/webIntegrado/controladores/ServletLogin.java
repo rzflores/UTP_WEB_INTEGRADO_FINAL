@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import utp.webIntegrado.dto.DTOConsultaCurso;
 import utp.webIntegrado.dto.DTOLoginUsuario;
 import utp.webIntegrado.dto.DTOObtenerUsuarioMenu;
 import utp.webIntegrado.entidades.Menu;
 import utp.webIntegrado.proc.Consulta.EJBConsultaCursoNombre;
 import utp.webIntegrado.proc.Login.EJBLoginUsuario;
+import utp.webIntegrado.proc.gestionCursos.dto.DTOConsultaCurso;
 import utp.webIntegrado.proc.obtenerMenus.EJBObtenerMenus;
 
 /**

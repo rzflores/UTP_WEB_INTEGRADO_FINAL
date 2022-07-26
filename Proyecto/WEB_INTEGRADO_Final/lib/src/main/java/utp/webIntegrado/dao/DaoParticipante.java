@@ -25,7 +25,7 @@ public class DaoParticipante extends DaoGenerico  {
 	public List<DTOConsultaParticipante> consultarEstudiantePorNombre(String cadena) {
 		List<DTOConsultaParticipante> lst = new ArrayList<DTOConsultaParticipante>();
 			DTOConsultaParticipante c = null;
-			String sql = "select * from usuarios where id_rol = 1 and primer_nombre like ?";
+			String sql = "select * from usuarios where id_rol = 3 and primer_nombre like ?";
 			Connection cnx = getConnection();
 			ResultSet rs;
 
@@ -53,7 +53,7 @@ public class DaoParticipante extends DaoGenerico  {
 	
 	public DTOParticipanteMatricula consultarparticipantePorId(int idParticipante) {
 		DTOParticipanteMatricula dto = null;
-		String sql = "select * from usuarios where id_rol = 1 and id = ?";
+		String sql = "select * from usuarios where id_rol = 3 and id = ?";
 		Connection cnx = getConnection();
 		ResultSet rs;
 		try {

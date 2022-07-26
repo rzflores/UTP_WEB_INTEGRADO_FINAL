@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import utp.webIntegrado.dto.DTOConsultaCurso;
 import utp.webIntegrado.dto.DTOParticipanteMatricula;
+import utp.webIntegrado.proc.gestionCursos.dto.DTOConsultaCurso;
 import utp.webIntegrado.proc.registrarMatricula.EJBMatriculaEstudiante;
 
 /**
@@ -33,16 +33,16 @@ public class ServletPostMatricular extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		DTOParticipanteMatricula dto = (DTOParticipanteMatricula) request.getSession().getAttribute("dtoMatriculaParticipante");
-		List<DTOConsultaCurso> lst = (List<DTOConsultaCurso>) request.getSession().getAttribute("lstMatricula");
-		ejb.matricular(dto, lst);
-		request.getSession().setAttribute("lstMatricula", null);
-		request.getSession().setAttribute("DTOEstudianteMatricula", null);
-		request.getSession().setAttribute("lstMatriculasCursos", null);
-		request.getSession().setAttribute("lstMatriculasEstudiantes", null);
-		request.getRequestDispatcher("jsp/pageMatriculasParticipante.jsp").forward(request, response);
-	}
+//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		DTOParticipanteMatricula dto = (DTOParticipanteMatricula) request.getSession().getAttribute("dtoMatriculaParticipante");
+//		List<DTOConsultaCurso> lst = (List<DTOConsultaCurso>) request.getSession().getAttribute("lstMatricula");
+//		ejb.matricular(dto, lst);
+//		request.getSession().setAttribute("lstMatricula", null);
+//		request.getSession().setAttribute("DTOEstudianteMatricula", null);
+//		request.getSession().setAttribute("lstMatriculasCursos", null);
+//		request.getSession().setAttribute("lstMatriculasEstudiantes", null);
+//		request.getRequestDispatcher("jsp/pageMatriculasParticipante.jsp").forward(request, response);
+//	}
 	
 
 }

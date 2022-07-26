@@ -7,10 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import utp.webIntegrado.dto.DTOConsultaCurso;
 import utp.webIntegrado.entidades.Curso;
 import utp.webIntegrado.entidades.Categoria;
 import utp.webIntegrado.entidades.Temario;
+import utp.webIntegrado.proc.gestionCursos.dto.DTOConsultaCurso;
 
 
 
@@ -51,74 +51,74 @@ public class DaoCurso extends DaoGenerico{
 	}
 	
 	
-	public List<DTOConsultaCurso> consultaCursoPorNombre(String cadena){
-		List<DTOConsultaCurso> lst = new ArrayList<DTOConsultaCurso>();
-		String sql = "select curso.id , cu.nombre , curso.precio , curso.descripcion , categoria.nombre  as categoria, temario.url "
-				+ "	from curso  curso 	"
-				+ "	inner join categoria   on (categoria.id = curso.\"idCategoria\")"
-				+ "	inner join  temario  on (temario.id = curso.\"idTemario\")"
-				+ "	where curso.nombre like ? ";
-		Connection cnx = getConnection();
-		
-		ResultSet rs;
-		try {
-			PreparedStatement stm = cnx.prepareStatement(sql);
-			stm.setString(1,cadena);
-			rs = stm.executeQuery();
-	
-			while(rs.next()) {
-				DTOConsultaCurso obj = new DTOConsultaCurso();				
-				obj.setIdCurso(rs.getInt("id"));
-				obj.setNombreCurso(rs.getString("nombre"));
-				obj.setDescripcion(rs.getString("descripcion"));		
-				obj.setNombreCategoria(rs.getString("categoria"));
-				obj.setUrlTemario(rs.getString("url"));																																								
-				lst.add(obj);				
-			}
-			cnx.close();		
-		}
-		catch(SQLException e) {
-			throw new RuntimeException(e);
-		}
-		
+//	public List<DTOConsultaCurso> consultaCursoPorNombre(String cadena){
+//		List<DTOConsultaCurso> lst = new ArrayList<DTOConsultaCurso>();
+//		String sql = "select curso.id , cu.nombre , curso.precio , curso.descripcion , categoria.nombre  as categoria, temario.url "
+//				+ "	from curso  curso 	"
+//				+ "	inner join categoria   on (categoria.id = curso.\"idCategoria\")"
+//				+ "	inner join  temario  on (temario.id = curso.\"idTemario\")"
+//				+ "	where curso.nombre like ? ";
+//		Connection cnx = getConnection();
+//		
+//		ResultSet rs;
+//		try {
+//			PreparedStatement stm = cnx.prepareStatement(sql);
+//			stm.setString(1,cadena);
+//			rs = stm.executeQuery();
+//	
+//			while(rs.next()) {
+//				DTOConsultaCurso obj = new DTOConsultaCurso();				
+//				obj.setIdCurso(rs.getInt("id"));
+//				obj.setNombreCurso(rs.getString("nombre"));
+//				obj.setDescripcion(rs.getString("descripcion"));		
+//				obj.setNombreCategoria(rs.getString("categoria"));
+//				obj.setUrlTemario(rs.getString("url"));																																								
+//				lst.add(obj);				
+//			}
+//			cnx.close();		
+//		}
+//		catch(SQLException e) {
+//			throw new RuntimeException(e);
+//		}
+//		
+//
+//		return lst;
+//		
+//	}
+//	
 
-		return lst;
-		
-	}
-	
-
-	public List<DTOConsultaCurso> consultaMatriculaCursoPorNombre(String cadena) {
-		List<DTOConsultaCurso> lst = new ArrayList<>();
-		String sql = "select id, nombre, precio,descripcion, id_categoria, id_temario from curso where nombre like ?";
-		Connection cnx = getConnection();
-		ResultSet rs;
-		PreparedStatement stm = null;
-		try {
-			stm = cnx.prepareStatement(sql);
-			
-			stm.setString(1, cadena);
-			rs = stm.executeQuery();
-			while (rs.next()) {
-				DTOConsultaCurso u = new DTOConsultaCurso();
-				u.setIdCurso(rs.getInt(1));
-				u.setNombreCurso(rs.getString(2));
-				u.setPrecioCurso(rs.getDouble(3));
-				u.setDescripcion(rs.getString(4));
-				u.setNombreCategoria(rs.getString(5));
-				u.setUrlTemario(rs.getString(6));
-				lst.add(u);
-			}
-			
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		} finally {
-			try {
-				stm.close();
-				cnx.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return lst;
-	}
+//	public List<DTOConsultaCurso> consultaMatriculaCursoPorNombre(String cadena) {
+//		List<DTOConsultaCurso> lst = new ArrayList<>();
+//		String sql = "select id, nombre, precio,descripcion, id_categoria, id_temario from curso where nombre like ?";
+//		Connection cnx = getConnection();
+//		ResultSet rs;
+//		PreparedStatement stm = null;
+//		try {
+//			stm = cnx.prepareStatement(sql);
+//			
+//			stm.setString(1, cadena);
+//			rs = stm.executeQuery();
+//			while (rs.next()) {
+//				DTOConsultaCurso u = new DTOConsultaCurso();
+//				u.setIdCurso(rs.getInt(1));
+//				u.setNombreCurso(rs.getString(2));
+//				u.setPrecioCurso(rs.getDouble(3));
+//				u.setDescripcion(rs.getString(4));
+//				u.setNombreCategoria(rs.getString(5));
+//				u.setUrlTemario(rs.getString(6));
+//				lst.add(u);
+//			}
+//			
+//		} catch (SQLException e) {
+//			throw new RuntimeException(e);
+//		} finally {
+//			try {
+//				stm.close();
+//				cnx.close();
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//		return lst;
+//	}
 }

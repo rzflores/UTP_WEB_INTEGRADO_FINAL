@@ -9,10 +9,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import utp.webIntegrado.dto.DTOConsultaCurso;
 import utp.webIntegrado.dto.DTOLoginUsuario;
+import utp.webIntegrado.dto.DTOObtenerUsuarioMenu;
+import utp.webIntegrado.entidades.Menu;
 import utp.webIntegrado.jpa.entidades.Curso;
 import utp.webIntegrado.jpa.entidades.Usuario;
+import utp.webIntegrado.jpa.entidades.UsuariosMenus;
+import utp.webIntegrado.proc.gestionCursos.dto.DTOConsultaCurso;
 
 /**
  * Session Bean implementation class EJBLoginUsuario
@@ -47,15 +50,82 @@ public class EJBLoginUsuario {
     		DTOLoginUsuario dto = new DTOLoginUsuario();
     		dto.setIdUsuario(u.getId());
     		dto.setIdRol(u.getRole().getId());
-    		
-    		
-    		
     		lstDto.add(dto);
     	}
-   	
-    	
-//    	
+  	
     	return lstDto;
+    	
+    }
+    
+    
+    public String UsuarioLogin(DTOUsuarioLogin usuarioLogin){
+		
+    	Query query = em.createNamedQuery("Usuario.loginUsuario");   
+    	query.setParameter("correo",usuarioLogin.getCorreo());
+    	query.setParameter("contrasenia",usuarioLogin.getPassword());
+    	
+    	
+    	
+    	
+    	  long result  =  query.getResultStream().count();
+    	
+    	  System.out.println(result);
+    	  
+    	if(result > 0) {
+    		return "pageLayout";
+    	}
+    	
+    	return "login";
+    	
+    }
+    
+    
+    public DTOUsuarioLogeado obtenerUsuarioLogeado(DTOUsuarioLogin usuarioLogin){
+		
+    	DTOUsuarioLogeado dtoUsuarioLogeado = new DTOUsuarioLogeado();       	
+    	Query query = em.createNamedQuery("Usuario.loginUsuario");   
+    	query.setParameter("correo",usuarioLogin.getCorreo());
+    	query.setParameter("contrasenia",usuarioLogin.getPassword());
+    	
+    	Usuario ususuarioLogin = new Usuario();
+    	
+    	Usuario user = (Usuario)query.getSingleResult();
+    	
+    	
+    	dtoUsuarioLogeado.setIdRol(user.getRole().getId());
+    	dtoUsuarioLogeado.setIdUsuario(user.getId());
+    	
+    	return dtoUsuarioLogeado;
+    	
+    }
+    
+    
+    
+    	public DTOObtenerUsuarioMenu obtenerUsuarioMenu(DTOUsuarioLogeado  dtoUsuarioLogeado){
+		
+    	
+    	List<Menu> lstMe = new ArrayList<Menu>();
+    	Query query = em.createNamedQuery("UsuariosMenus.obtenerMenusUsuario");   
+    	query.setParameter("idUsuario",dtoUsuarioLogeado.getIdUsuario());    	
+    	
+    	List<UsuariosMenus> lstUsuarioMenu = query.getResultList();
+    	
+    	
+    	DTOObtenerUsuarioMenu dto = new DTOObtenerUsuarioMenu();
+    	for( UsuariosMenus um : lstUsuarioMenu ) 
+    	{
+    		
+    		dto.setNombreUsuario(um.getUsuario().getPrimerNombre());
+    		dto.setNombreRol(um.getUsuario().getRole().getNombre());
+    		Menu me = new Menu();
+    		me.setNombre(um.getMenus().getNombre());
+    		me.setLink(um.getMenus().getLink());
+    		lstMe.add(me);    		    		    		    		    		    		
+    		
+    	}
+    	dto.setLstMenu(lstMe);
+
+    	return dto;
     	
     }
 

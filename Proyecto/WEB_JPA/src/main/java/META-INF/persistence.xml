@@ -4,12 +4,12 @@
 		<jta-data-source>java:/jdbc/dbEcomerceCursos</jta-data-source>
 		<class>utp.webIntegrado.jpa.entidades.Categoria</class>
 		<class>utp.webIntegrado.jpa.entidades.Curso</class>
-		<class>utp.webIntegrado.jpa.entidades.Temario</class>
 		<class>utp.webIntegrado.jpa.entidades.Horario</class>
 		<class>utp.webIntegrado.jpa.entidades.Matricula</class>
 		<class>utp.webIntegrado.jpa.entidades.Menus</class>
-		<class>utp.webIntegrado.jpa.entidades.UsuariosMenus</class>
 		<class>utp.webIntegrado.jpa.entidades.Role</class>
+		<class>utp.webIntegrado.jpa.entidades.Temario</class>
 		<class>utp.webIntegrado.jpa.entidades.Usuario</class>
+		<class>utp.webIntegrado.jpa.entidades.UsuariosMenus</class>
 	</persistence-unit>
 </persistence>

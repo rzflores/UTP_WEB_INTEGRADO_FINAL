@@ -12,8 +12,10 @@ import java.util.List;
  */
 @Entity
 @NamedQueries({
+	@NamedQuery(name="Temario.listarTemarios", query="SELECT t FROM Temario t"),
 	@NamedQuery(name="Temario.findAll", query="SELECT t FROM Temario t where t.id=:cadena"),
-	@NamedQuery(name="Temario.eliminarTemario", query="SELECT t FROM Temario t"),
+	@NamedQuery(name="Temario.eliminarTemario", query="Delete FROM Temario t where t.id=:idTemario"),
+	@NamedQuery(name="Temario.obtenerTemarioPorId", query="SELECT t FROM Temario t  where t.id=:idTemario"),
 })
 
 
@@ -21,6 +23,7 @@ public class Temario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	@Temporal(TemporalType.DATE)

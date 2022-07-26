@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>WEB_INTEGRADO_Final-lib</name>
+	<name>lib</name>
 	<comment>Project WEB_INTEGRADO_Final-lib created by Buildship.</comment>
 	<projects>
 		<project>web-integrado-jpa</project>

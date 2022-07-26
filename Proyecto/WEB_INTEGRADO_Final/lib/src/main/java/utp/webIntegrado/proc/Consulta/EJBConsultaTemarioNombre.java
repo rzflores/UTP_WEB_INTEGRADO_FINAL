@@ -9,10 +9,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import utp.webIntegrado.dto.DTOConsultaCurso;
-import utp.webIntegrado.dto.DTOConsultaTemario;
 import utp.webIntegrado.jpa.entidades.Curso;
 import utp.webIntegrado.jpa.entidades.Temario;
+import utp.webIntegrado.proc.gestionCursos.dto.DTOConsultaCurso;
+import utp.webIntegrado.proc.gestionTemarios.dto.DTOConsultaTemario;
 
 /**
  * Session Bean implementation class EJBConsultaTemarioNombre

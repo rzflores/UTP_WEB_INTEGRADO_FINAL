@@ -9,6 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import utp.webIntegrado.proc.gestionCursos.dto.DTOConsultaCurso;
 import utp.webIntegrado.proc.registrarMatricula.EJBMatriculaEstudiante;
 import utp.webIntegrado.dto.*;
 /**
@@ -32,11 +34,11 @@ public class ServletPostMatriculaCursoBusqueda extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String cadena = request.getParameter("cadena");
-		List<DTOConsultaCurso> lst = ejb.consultaCursoPorNombre(cadena);
-		request.getSession().setAttribute("lstMatriculasCursos", lst);
-		request.getRequestDispatcher("jsp/pageMatriculaCurso.jsp").forward(request, response);
-	}
+//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		String cadena = request.getParameter("cadena");
+//		List<DTOConsultaCurso> lst = ejb.consultaCursoPorNombre(cadena);
+//		request.getSession().setAttribute("lstMatriculasCursos", lst);
+//		request.getRequestDispatcher("jsp/pageMatriculaCurso.jsp").forward(request, response);
+//	}
 
 }

@@ -1,34 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-            
+                
     
-    <wb-module deploy-name="WEB_INTEGRADO_Final-lib">
-                        
+    
+    <wb-module deploy-name="lib">
+                                
+        
         
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-                        
+                                
+        
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-                        
+                                
+        
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-                        
+                                
+        
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
-                        
+                                
+        
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
+                
         <dependent-module archiveName="web-integrado-jpa.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/web-integrado-jpa/web-integrado-jpa">
+                        
             <dependency-type>uses</dependency-type>
-        </dependent-module>
-                        
-        
-        <property name="context-root" value="WEB_INTEGRADO_Final-lib"/>
-                        
-        
-        <property name="java-output-path" value="/WEB_INTEGRADO_Final-lib/bin/default"/>
                     
+        </dependent-module>
+                                
+        
+        
+        <property name="java-output-path" value="/lib/bin/default"/>
+        <property name="context-root" value="lib"/>
+                            
+    
     
     </wb-module>
-        
+            
+
 
 </project-modules>

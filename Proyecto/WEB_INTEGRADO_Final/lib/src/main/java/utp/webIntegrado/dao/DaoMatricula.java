@@ -10,8 +10,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.List;
 
-import utp.webIntegrado.dto.DTOConsultaCurso;
 import utp.webIntegrado.dto.DTOParticipanteMatricula;
+import utp.webIntegrado.proc.gestionCursos.dto.DTOConsultaCurso;
 
 
 public class DaoMatricula extends DaoGenerico {

@@ -10,7 +10,13 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Categoria.findAll", query="SELECT c FROM Categoria c")
+@NamedQueries({
+	@NamedQuery(name="Categoria.listarCategorias", query="SELECT c FROM Categoria c"),	
+	@NamedQuery(name="Categoria.eliminarCategoria", query="Delete FROM Categoria c where c.id=:idCategoria"),
+	@NamedQuery(name="Categoria.obtenerCategoriaPorId", query="SELECT c FROM Categoria c  where c.id=:idCategoria"),
+})
+
+
 public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L;
 
