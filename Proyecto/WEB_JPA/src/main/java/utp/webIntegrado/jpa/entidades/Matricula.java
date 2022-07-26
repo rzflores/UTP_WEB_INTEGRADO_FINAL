@@ -11,8 +11,9 @@ import java.util.Date;
  */
 @Entity
  @NamedQueries({
-	 @NamedQuery(name="Matricula.obtenerParcipantesEvaluar", query="SELECT m FROM Matricula m JOIN m.usuario u JOIN m.curso c WHERE u.primerNombre LIKE :cadena AND m.nota IS NULL")
-//	 ,@NamedQuery(name="Matricula.registrarNota" , query="UPDATE Matricula m SET m.nota ::= notaCalificada   WHERE m.id =:idParticipanteMatricula")
+	 @NamedQuery(name="Matricula.obtenerParcipantesEvaluar", query="SELECT m FROM Matricula m JOIN m.usuario u JOIN m.curso c WHERE u.primerNombre LIKE :cadena"),
+	 @NamedQuery(name="Matricula.obtenerParcipantesEvaluarPorId", query="SELECT m FROM Matricula m JOIN m.usuario u JOIN m.curso c WHERE m.id = :idParticipanteMatricula"),
+	 @NamedQuery(name="Matricula.obtenerListaParcipantesEvaluar", query="SELECT m FROM Matricula m JOIN m.usuario u JOIN m.curso c"),
  })
 
 public class Matricula implements Serializable {
@@ -24,7 +25,7 @@ public class Matricula implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date fecha;
 
-	private Integer nota;
+	private double nota;
 
 	//bi-directional many-to-one association to Curso
 	@ManyToOne
@@ -55,11 +56,11 @@ public class Matricula implements Serializable {
 		this.fecha = fecha;
 	}
 
-	public Integer getNota() {
+	public double getNota() {
 		return this.nota;
 	}
 
-	public void setNota(Integer nota) {
+	public void setNota(double nota) {
 		this.nota = nota;
 	}
 

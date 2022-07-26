@@ -1,26 +1,28 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+ 
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<html  xmlns="http://www.w3.org/1999/xhtml" 
+	   xmlns:b="http://bootsfaces.net/ui"
+	   xmlns:f="http://java.sun.com/jsf/core"
+	   xmlns:h="http://java.sun.com/jsf/html"
+	   xmlns:c="http://java.sun.com/jsp/jstl/core"
+	   >
+<h:head>
+	<meta charset="utf-8"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+    <meta name="description" content=""></meta>
+    <meta name="author" content=""></meta>
 
 <title>Ecomerce</title>
-	<link href="../css/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<link href="../css/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"></link>
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+        rel="stylesheet"></link>
 
     <!-- Custom styles for this template-->
-    <link href="<%=request.getContextPath()%>/css/sb-admin-2.css" rel="stylesheet">
-</head>
+       <link href="../css/sb-admin-2.css" rel="stylesheet"></link>
+</h:head>
 <body id="page-top">
-
 
 
 
@@ -40,21 +42,24 @@
             </a>
 
            
-            <hr class="sidebar-divider">
+            <hr class="sidebar-divider"></hr>
 
             <!-- Heading -->
            <div class="sidebar-heading">
-                <c:out value="${DTOObtenerUsuarioMenu.nombreRol}"></c:out>
+               <h:outputText value="#{beanLoginUsuario.dtoUsuarioMenu.nombreRol}"></h:outputText>
             </div>
 
+
             <!-- Nav Item - Pages Collapse Menu -->
-            <c:forEach items ="${DTOObtenerUsuarioMenu.lstMenu}" var="e"> 
-            	<li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath() %>/jsp/${e.link}.jsp">
+          <c:forEach items ="#{beanLoginUsuario.dtoUsuarioMenu.lstMenu}" var="e"> 
+            	<li class="nav-item">            	 
+                <a class="nav-link" href="#{request.contextPath}/${e.link}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>  ${ e.nombre }</span></a>
+                    <span>  ${ e.nombre }</span>
+                 </a>   
             	</li>            
-            </c:forEach>            
+            </c:forEach>               
+                          
 
         </ul>
         <!-- End of Sidebar -->
@@ -69,9 +74,9 @@
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                   <!--  <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-window-close"></i> <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <c:out value="${DTOObtenerUsuarioMenu.nombreUsuario}"></c:out></span> 
-                    </button>
+                    </button> -->
 
                    
 
@@ -86,10 +91,10 @@
                         <li class="nav-item dropdown no-arrow">
                         	
                             	
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                            <!-- <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"><c:out value="${DTOObtenerUsuarioMenu.nombreUsuario}"></c:out></span>                              
-                            </a>
+                            </a> -->
                             <!-- Dropdown - User Information -->
                             
                         </li>
@@ -98,84 +103,42 @@
 
                 </nav>
                 <!-- End of Topbar -->
-                
-          		<!---------Colocar contenido ------------------->
-          		<div class="container">      
+                <div class="container">
+          		<h1>Registrar Nota:</h1>
           		
-							 <h3>Datos  del Participante</h3>               	
-							Nombre=<c:out value="${dtoMatriculaParticipante.nombreParticipante}"></c:out>
-							(Codigo=<c:out value="${dtoMatriculaParticipante.idParticipante}"></c:out>)
-							<br/>
-							Correo:<c:out value="${dtoMatriculaParticipante.correoParticipante}"></c:out>
-							<br>
-							Telefono:<c:out value="${dtoMatriculaParticipante.telefonoParticipante}"></c:out>
-							<br/><br/>
-						
-							
-							
-							
-							<form method="post" action="<%=request.getContextPath() %>/ServletPostMatriculaCursoBusqueda">
-							<h3>Cursos:</h3>
-							<input type="text" name="cadena"/>
-							<input  class="btn btn-success" type="submit" value="Buscar">
-							</form>
-							<br/>
-							<table class="table">
-								<tr> 
-									<td> <b> ID </b>  </td>
-									<td> <b> CURSO</b>  </td>
-									<td> <b> PRECIO</b>  </td>
-								</tr>
-								<c:forEach items="${lstMatriculasCursos}" var="e">
-									<tr> 
-									<td> <c:out value="${e.idCurso}"></c:out> </td>
-									<td> <c:out value="${e.nombreCurso}"></c:out> </td>
-									<td> <c:out value="${e.precioCurso}"></c:out> </td>																											
-									<td>
-										<form method="post" action="<%=request.getContextPath() %>/ServletPostMatriculaCurso" >
-										    <input class="d-none" name="idCurso" value="${e.idCurso}">										    	
-										    <input type="submit" class="btn btn-success" value="Agregar" >									    									   
-										</form>
-									</td>
-									</tr>
-								</c:forEach>
-							</table>
-							<h2>Cursos a matricular:</h2>
-							<table class="table">
-								<tr> 
-									<td> <b> ID </b>  </td>
-									<td> <b> CURSO </b>  </td> 
-									<td> <b> PRECIO </b>  </td>
-								</tr>
-								<c:forEach items="${lstMatricula}" var="e">
-									<tr> <td> <c:out value="${e.idCurso}"></c:out> </td>
-									<td> <c:out value="${e.nombreCurso}"></c:out> </td>
-									<td> <c:out value="${e.precioCurso}"></c:out> </td>
-									<td>
-									 <form method="post" action="<%=request.getContextPath() %>/ServletPostMatriculaQuitarCurso" >
-										    <input class="d-none" name="idCurso" value="${e.idCurso}">										    	
-										    <input type="submit" class="btn btn-danger" value="Quitar" >									    									   
-										</form>		 								
-									</td>
-									</tr>
-								</c:forEach>
-							</table>
-							
-							<br/><br/>
-							<div class="container pb-5">							
-							<form method="post" action="<%=request.getContextPath() %>/ServletPostMatricular"><input class="btn btn-block btn-success" type="submit" value="Matricular"></form>
-							</div>
-							                	 
-							                
-                
-                
-            	</div>
-            	<!-- End of Main Content -->
+          		   <h:form>
+	          		   <h:inputHidden value="#{beanRegistrarNotas.dtoParticipanteEvaluar.idMatriculaParticipante}" > </h:inputHidden>
+		         		<h:panelGrid columns="2">
+		         				         			
+		         			<h:outputText  value="Nombre Curso"></h:outputText>
+		         			<h:inputText  value="#{beanRegistrarNotas.dtoParticipanteEvaluar.cursoNombre}" ></h:inputText>
+		         			
+		         			<h:outputText  value="Precio"></h:outputText>
+		         			<h:inputText  value="#{beanRegistrarNotas.dtoParticipanteEvaluar.nota}" ></h:inputText>
+		         			
+		         			
+		         		</h:panelGrid>
+		         		<h:commandButton class="btn btn-info" value="Editar" action="#{beanRegistrarNotas.registrarNota}" ></h:commandButton>
+	          		</h:form>       		 
+          		</div>
+          		
+           		
+            <!-- End of Main Content -->
 
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright  Your Website 2021</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
 
         </div>
         <!-- End of Content Wrapper -->
 
+    </div>
     </div>
     <!-- End of Page Wrapper -->
 
@@ -192,7 +155,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true">ï¿½</span>
                     </button>
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>

@@ -1,4 +1,4 @@
-package utp.webIntegrado.proc.Login;
+package utp.webIntegrado.proc.Login.dto;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package utp.webIntegrado.proc.registrarMatricula;
+package utp.webIntegrado.proc.registrarMatricula.dto;
 
 import java.io.Serializable;
 

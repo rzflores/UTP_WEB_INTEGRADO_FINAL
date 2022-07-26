@@ -9,12 +9,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import utp.webIntegrado.dto.DTOLoginUsuario;
-import utp.webIntegrado.dto.DTOObtenerUsuarioMenu;
 import utp.webIntegrado.entidades.Menu;
 import utp.webIntegrado.jpa.entidades.Curso;
 import utp.webIntegrado.jpa.entidades.Usuario;
 import utp.webIntegrado.jpa.entidades.UsuariosMenus;
+import utp.webIntegrado.proc.Login.dto.DTOObtenerUsuarioMenu;
+import utp.webIntegrado.proc.Login.dto.DTOUsuarioLogeado;
+import utp.webIntegrado.proc.Login.dto.DTOUsuarioLogin;
 import utp.webIntegrado.proc.gestionCursos.dto.DTOConsultaCurso;
 
 /**
@@ -34,28 +35,7 @@ public class EJBLoginUsuario {
         // TODO Auto-generated constructor stub
     }
     
-    public List<DTOLoginUsuario> loginUsuario(String correo , String contrasenia){
-		
-    	List<DTOLoginUsuario> lstDto = new ArrayList<DTOLoginUsuario>();       	
-    	Query query = em.createNamedQuery("Usuario.loginUsuario");   
-    	query.setParameter("correo",correo);
-    	query.setParameter("contrasenia",contrasenia);
-    	
-    	List<Usuario> lstUser = query.getResultList();
-    	
-    	
-    	
-    	for( Usuario u : lstUser ) 
-    	{
-    		DTOLoginUsuario dto = new DTOLoginUsuario();
-    		dto.setIdUsuario(u.getId());
-    		dto.setIdRol(u.getRole().getId());
-    		lstDto.add(dto);
-    	}
-  	
-    	return lstDto;
-    	
-    }
+
     
     
     public String UsuarioLogin(DTOUsuarioLogin usuarioLogin){

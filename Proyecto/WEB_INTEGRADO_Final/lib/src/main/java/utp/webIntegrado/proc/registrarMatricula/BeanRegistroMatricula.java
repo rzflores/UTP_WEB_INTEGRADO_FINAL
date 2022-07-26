@@ -10,6 +10,7 @@ import javax.inject.Named;
 
 import utp.webIntegrado.dto.DTORegistrarMatricula;
 import utp.webIntegrado.dto.DTORestRespuesta;
+import utp.webIntegrado.proc.registrarMatricula.dto.DTOMensajeMatricula;
 
 @Named
 @SessionScoped
@@ -38,8 +39,7 @@ public class BeanRegistroMatricula implements Serializable{
 	public BeanRegistroMatricula (){
 		
 		
-		dtoMensajeMatricula = new DTOMensajeMatricula();
-		dtoMensajeMatricula.setVisibleMensaje("display:hidden;");
+		dtoMensajeMatricula = new DTOMensajeMatricula();		
 		dtoRegistrarMatricula = new DTORegistrarMatricula();
 		
 	}

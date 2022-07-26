@@ -11,9 +11,10 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
-import utp.webIntegrado.dto.DTOLoginUsuario;
-import utp.webIntegrado.dto.DTOObtenerUsuarioMenu;
 import utp.webIntegrado.entidades.Menu;
+import utp.webIntegrado.proc.Login.dto.DTOObtenerUsuarioMenu;
+import utp.webIntegrado.proc.Login.dto.DTOUsuarioLogeado;
+import utp.webIntegrado.proc.Login.dto.DTOUsuarioLogin;
 
 
 

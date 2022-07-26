@@ -106,23 +106,22 @@
                 </nav>
                 <!-- End of Topbar -->
                  <div class="container">   
-          		<h1>Editar Categoria</h1>
+          		<h1>Editar Temario</h1>
 	          		<h:form>
-	          		   <h:inputHidden value="#{beanEditarCategoria.dtoEditarCategoria.idCategoria}" > </h:inputHidden>
+	          		   <h:inputHidden value="#{beanEditarTemario.dtoEditarTemario.idTemario}" > </h:inputHidden>
 		         		<h:panelGrid columns="2">
 		         				         			
 		         		
 		         			<h:outputText  value="Nombre Archivo"></h:outputText>
-		         			<h:inputText  value="#{beanEditarCategoria.dtoEditarCategoria.nombre}" ></h:inputText>
+		         			<h:inputText  value="#{beanEditarTemario.dtoEditarTemario.nombreArchivo}" ></h:inputText>
 		         			
 		         			<h:outputText  value="Url"></h:outputText>
-		         			<h:inputText  value="#{beanEditarCategoria.dtoEditarCategoria.nombreCorto}" ></h:inputText>
+		         			<h:inputText  value="#{beanEditarTemario.dtoEditarTemario.urlTemario}" ></h:inputText>
 		         			
-		         			<h:outputText  value="Url"></h:outputText>
-		         			<h:inputText  value="#{beanEditarCategoria.dtoEditarCategoria.descripcion}" ></h:inputText>
+		         			
 		         			
 		         		</h:panelGrid>
-		         		<h:commandButton  value="Editar" action="#{beanEditarCategoria.editarCategoria}" ></h:commandButton>
+		         		<h:commandButton  value="Editar" action="#{beanEditarTemario.editarTemario}" ></h:commandButton>
 	          		</h:form>
                 </div>
                 

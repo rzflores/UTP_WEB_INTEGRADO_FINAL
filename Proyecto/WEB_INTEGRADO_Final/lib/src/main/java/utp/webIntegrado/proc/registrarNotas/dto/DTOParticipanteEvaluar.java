@@ -1,30 +1,21 @@
-package utp.webIntegrado.dto;
+package utp.webIntegrado.proc.registrarNotas.dto;
 
 public class DTOParticipanteEvaluar {
 	private int idMatriculaParticipante;
+	private String participante;
+	private String cursoNombre;
+	private double nota;
+	
+	
+	
 	public int getIdMatriculaParticipante() {
 		return idMatriculaParticipante;
 	}
 	public void setIdMatriculaParticipante(int idMatriculaParticipante) {
 		this.idMatriculaParticipante = idMatriculaParticipante;
 	}
-	private int idParticipante;
-	private boolean esHabilitado;
-	public boolean getEsHabilitado() {
-		return esHabilitado;
-	}
-	public void setEsHabilitado(boolean esHabilitado) {
-		this.esHabilitado = esHabilitado;
-	}
-	public int getIdParticipante() {
-		return idParticipante;
-	}
-	public void setIdParticipante(int idParticipante) {
-		this.idParticipante = idParticipante;
-	}
-	private String participante;
-	private String cursoNombre;
-	private double nota;
+	
+	
 	public String getParticipante() {
 		return participante;
 	}

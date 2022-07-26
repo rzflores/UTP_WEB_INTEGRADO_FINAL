@@ -13,9 +13,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import utp.webIntegrado.dto.DTOObtenerUsuarioMenu;
 import utp.webIntegrado.proc.gestionTemarios.dto.DTOConsultaTemario;
-import utp.webIntegrado.proc.obtenerMenus.EJBObtenerMenus;
 
 @Named
 @SessionScoped
